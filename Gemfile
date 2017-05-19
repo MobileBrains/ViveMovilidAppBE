@@ -50,6 +50,11 @@ gem 'devise-bootstrap-views'
 # Administration dasboard
 gem 'rails_admin', '~> 1.1.1'
 
+#User permisions
+gem 'cancancan'
+
+#User Roles
+gem 'rolify'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
