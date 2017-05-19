@@ -42,10 +42,14 @@ gem 'figaro'
 gem 'bootstrap-sass', '~> 3.2.0'
 gem 'autoprefixer-rails'
 
-#User Authentication
+# User Authentication
 gem 'devise'
-# styled devise views
+# Styled devise views
 gem 'devise-bootstrap-views'
+
+# Administration dasboard
+gem 'rails_admin', '~> 1.1.1'
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
