@@ -39,13 +39,23 @@ gem 'jbuilder', '~> 2.5'
 gem 'figaro'
 
 # Bootstrap integration
-gem 'bootstrap-sass', '~> 3.2.0'
+#gem 'bootstrap-sass', '~> 3.2.0'
+# Bootstrap 4 integration
+gem 'bootstrap', '~> 4.0.0.alpha6'
+# Bootstrap generator
+gem 'bootstrap-sass-extras'
 gem 'autoprefixer-rails'
+
+source 'https://rails-assets.org' do
+  gem 'rails-assets-tether', '>= 1.3.3'
+end
 
 # User Authentication
 gem 'devise'
 # Styled devise views
 gem 'devise-bootstrap-views'
+#Pretty alerts
+gem 'toastr-rails'
 
 # Administration dasboard
 gem 'rails_admin', '~> 1.1.1'
