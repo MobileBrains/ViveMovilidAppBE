@@ -1,4 +1,4 @@
-#require 'grape'
+require 'grape'
 
 module API
   class Base < Grape::API

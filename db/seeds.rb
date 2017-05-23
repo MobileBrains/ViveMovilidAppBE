@@ -7,14 +7,21 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 Role.create([{ name: 'Admin' }, { name: 'MasterAdmin' }, { name: 'RegularUser' }])
 
+masterAdmin = User.create({
+              email: 'masteradmin@mail.com',
+              password: '1234321',
+              roles: [Role.find_by_name('MasterAdmin')]
+              })
+
+regularUser = User.create({
+              email: 'admin@mail.com',
+              password: '1234321',
+              roles: [Role.find_by_name('Admin')]
+              })
+
 regularUser = User.create({
               email: 'user@mail.com',
               password: '1234321',
               roles: [Role.find_by_name('RegularUser')]
               })
 
-masterAdmin = User.create({
-              email: 'masteradmin@mail.com',
-              password: '1234321',
-              roles: [Role.find_by_name('MasterAdmin')]
-              })

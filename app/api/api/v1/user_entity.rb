@@ -1,4 +1,4 @@
-#require 'grape-entity'
+require 'grape-entity'
 
 module API
   module V1
