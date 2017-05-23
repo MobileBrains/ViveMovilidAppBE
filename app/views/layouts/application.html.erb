@@ -41,7 +41,7 @@
 
     <%= render 'partials/navbar' %>
 
-    <div class="container-fluid" style="margin-top: 65px">
+    <div class="container-fluid margin-bottom-footer" style="margin-top: 65px">
       <div class="row">
         <div class="col-md-12">
           <% unless flash.empty? %>
@@ -55,14 +55,15 @@
           <%= bootstrap_flash %>
 
           <%= yield %>
+
         </div>
       </div><!--/row-->
 
-      <footer>
-        <p>&copy; Company 2017</p>
-      </footer>
-
     </div> <!-- /container -->
+
+
+      <%= render 'partials/footer' %>
+
 
   </body>
 </html>
