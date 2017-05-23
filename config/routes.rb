@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   mount RailsAdmin::Engine => '/dashboard', as: 'rails_admin'
-  mount API::Base, at: "/api"
+  mount API::Base, at: "/viveApi"
 
   root to: "basic#welcome"
 
