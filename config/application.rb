@@ -14,5 +14,8 @@ module ViveMovilidAppBE
 
     config.time_zone = 'Bogota'
     config.i18n.default_locale = :en
+
+    config.paths.add File.join('app', 'api'), glob: File.join('**', '*.rb')
+    config.autoload_paths += Dir[Rails.root.join('app', 'api' , '*')]
   end
 end

@@ -66,6 +66,12 @@ gem 'cancancan'
 #User Roles
 gem 'rolify'
 
+group :api do
+  gem 'grape'
+  gem 'grape-entity'
+  gem 'rack-cors', :require => 'rack/cors'
+end
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
