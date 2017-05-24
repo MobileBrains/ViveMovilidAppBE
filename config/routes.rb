@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :vehicles
   get 'maps/index_map'
 
   mount RailsAdmin::Engine => '/dashboard', as: 'rails_admin'
