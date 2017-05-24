@@ -12,11 +12,12 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require turbolinks
 //= require tether
 //= require bootstrap-sprockets
 //= require bootstrap
 //= require underscore
 //= require gmaps/google
+//= require dataTables/jquery.dataTables
 //= require toastr
-//= require turbolinks
 //= require_tree .

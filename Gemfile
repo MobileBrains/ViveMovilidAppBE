@@ -65,17 +65,21 @@ gem 'cancancan'
 # User Roles
 gem 'rolify'
 
-group :api do
-  gem 'grape'
-  gem 'grape-entity'
-  gem 'rack-cors', :require => 'rack/cors'
-end
-
 #Google Maps integration
 gem 'gmaps4rails'
 
 #Google Maps Geocoding tasks handler (Geocoding is the process of converting addresses to longitude - latitude, and more)
 gem 'geocoder'
+
+# Ajax datatables
+gem 'jquery-datatables-rails', git: 'git://github.com/rweng/jquery-datatables-rails.git', branch: 'master'
+gem 'ajax-datatables-rails'
+
+group :api do
+  gem 'grape'
+  gem 'grape-entity'
+  gem 'rack-cors', :require => 'rack/cors'
+end
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
