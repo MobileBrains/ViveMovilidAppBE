@@ -38,12 +38,11 @@ gem 'jbuilder', '~> 2.5'
 # Manage the application.yml file
 gem 'figaro'
 
-# Bootstrap integration
-#gem 'bootstrap-sass', '~> 3.2.0'
 # Bootstrap 4 integration
 gem 'bootstrap', '~> 4.0.0.alpha6'
 # Bootstrap generator
 gem 'bootstrap-sass-extras'
+# add correct prefix to css files
 gem 'autoprefixer-rails'
 
 source 'https://rails-assets.org' do
@@ -60,10 +59,10 @@ gem 'toastr-rails'
 # Administration dasboard
 gem 'rails_admin', '~> 1.1.1'
 
-#User permisions
+# User permisions
 gem 'cancancan'
 
-#User Roles
+# User Roles
 gem 'rolify'
 
 group :api do
@@ -71,6 +70,12 @@ group :api do
   gem 'grape-entity'
   gem 'rack-cors', :require => 'rack/cors'
 end
+
+#Google Maps integration
+gem 'gmaps4rails'
+
+#Google Maps Geocoding tasks handler (Geocoding is the process of converting addresses to longitude - latitude, and more)
+gem 'geocoder'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

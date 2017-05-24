@@ -83,8 +83,10 @@ GEM
       thor (~> 0.14)
     font-awesome-rails (4.7.0.1)
       railties (>= 3.2, < 5.1)
+    geocoder (1.4.3)
     globalid (0.4.0)
       activesupport (>= 4.2.0)
+    gmaps4rails (2.1.2)
     grape (0.19.2)
       activesupport
       builder
@@ -255,6 +257,8 @@ DEPENDENCIES
   devise
   devise-bootstrap-views
   figaro
+  geocoder
+  gmaps4rails
   grape
   grape-entity
   jbuilder (~> 2.5)

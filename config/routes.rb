@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'maps/index_map'
+
   mount RailsAdmin::Engine => '/dashboard', as: 'rails_admin'
   mount API::Base, at: "/viveApi"
 
