@@ -5,7 +5,7 @@ class CreateVehicles < ActiveRecord::Migration[5.0]
       t.string :registration_plate
       t.float :latitude
       t.float :longitude
-      t.string :location
+      t.string :last_location
 
       t.timestamps
     end

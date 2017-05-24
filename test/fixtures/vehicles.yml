@@ -5,11 +5,11 @@ one:
   registration_plate: MyString
   latitude: 1.5
   longitude: 1.5
-  location: MyString
+  last_location: MyString
 
 two:
   lateral_number: 1
   registration_plate: MyString
   latitude: 1.5
   longitude: 1.5
-  location: MyString
+  last_location: MyString
