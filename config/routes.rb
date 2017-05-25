@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :bus_routes
   resources :vehicles
   get 'maps/index_map'
 
