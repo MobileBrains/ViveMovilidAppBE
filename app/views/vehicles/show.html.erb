@@ -5,6 +5,8 @@
 
 <div class="fieldset">
   <dl>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:name) %></dt>
+      <dd><pre class="prettyprint"><%= @vehicle.name %></pre></dd>
       <dt class="label label-default"><%= model_class.human_attribute_name(:lateral_number) %></dt>
       <dd><pre class="prettyprint"><%= @vehicle.lateral_number %></pre></dd>
       <dt class="label label-default"><%= model_class.human_attribute_name(:registration_plate) %></dt>
