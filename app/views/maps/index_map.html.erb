@@ -1,4 +1,26 @@
 <h1>index map</h1>
 <p>otro mapa xD</p>
 <hr>
+
+<div style='width: 100%;' class="text-center">
+  <div id="map" class="map_dimensions" >el mapa</div>
+</div>
+<script type="text/javascript">
+
+
+$(function(){
+  intializeMap();
+});
+
+function intializeMap(){
+  handler = Gmaps.build('Google');
+  handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+    markers = handler.addMarkers(<%=raw @hash.to_json %>);
+    handler.bounds.extendWith(markers);
+    handler.map.centerOn({lat: 5.574076, lng: -75.5926227});
+    handler.fitMapToBounds();
+  });
+}
+
+</script>
 <%= render 'partials/index_map' %>
