@@ -75,10 +75,15 @@ gem 'geocoder'
 gem 'jquery-datatables-rails', git: 'git://github.com/rweng/jquery-datatables-rails.git', branch: 'master'
 gem 'ajax-datatables-rails'
 
+#
+gem 'doorkeeper'
+gem 'rack-oauth2'
+
 group :api do
   gem 'grape'
   gem 'grape-entity'
   gem 'rack-cors', :require => 'rack/cors'
+  gem 'rest-client' # Test API
 end
 
 group :development, :test do

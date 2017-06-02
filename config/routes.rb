@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  use_doorkeeper
   resources :companies
   resources :bus_routes
   resources :vehicles
