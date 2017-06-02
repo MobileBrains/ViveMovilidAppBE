@@ -18,6 +18,7 @@ module API
                                           longitude: permitted_params[:longitude],
                                           vehicle_id: permitted_params[:vehicle_id]})
             location.save
+            #put the pusher trigger here!
             present :location, location, with: LocationEntity
           else
             return "No fue posible actualizar ubicacion, intente de nuevo."
