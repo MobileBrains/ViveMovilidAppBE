@@ -75,7 +75,7 @@ gem 'geocoder'
 gem 'jquery-datatables-rails', git: 'git://github.com/rweng/jquery-datatables-rails.git', branch: 'master'
 gem 'ajax-datatables-rails'
 
-#
+# Api authentication
 gem 'doorkeeper'
 gem 'rack-oauth2'
 

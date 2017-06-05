@@ -19,3 +19,5 @@ module ViveMovilidAppBE
     config.autoload_paths += Dir[Rails.root.join('app', 'api' , '*')]
   end
 end
+
+require "#{Rails.root}/lib/warden_strategies"
