@@ -1,6 +1,7 @@
 class BasicController < ApplicationController
   layout "application"
   skip_before_action :authenticate_user!, :only => [:welcome]
+
   def welcome
     @bus_locations = Vehicle.where.not(latitude: nil, longitude:nil )
      @hash = Gmaps4rails.build_markers(@bus_locations) do |bus_location, marker|
