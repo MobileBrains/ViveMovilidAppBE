@@ -6,16 +6,37 @@
 
 $(function(){
   intializeMap();
+
 });
 
 function intializeMap(){
-  handler = Gmaps.build('Google');
-  handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+    handler = Gmaps.build('Google');
+    handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
     markers = handler.addMarkers(<%=raw @hash.to_json %>);
     handler.bounds.extendWith(markers);
-    handler.map.centerOn({lat: 5.574076, lng: -75.5926227});
+    handler.map.centerOn({lat: 5.0633619, lng: -75.5102252});
     handler.fitMapToBounds();
+    handler.getMap().setZoom(17);
+    setInterval(updateMarkers, 20000);
   });
 }
+
+function updateMarkers(){
+  $.ajax({
+          url: '/maps/updateLocations/',
+          type: 'POST',
+          data: {
+            //bus_route: $('#route_name').val();
+          },
+          success: function(data) {
+            handler.removeMarkers(markers)
+            markers = handler.addMarkers(data);
+          },
+          error: function(data) {
+            console.log(data);
+          }
+        });
+}
+
 
 </script>
