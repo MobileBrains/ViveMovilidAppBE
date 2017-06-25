@@ -14,6 +14,7 @@ Rails.application.routes.draw do
 
   get 'maps/index_map'
   get 'basic/welcome'
+  get 'basic/updateVehicleLocations'
 
   post 'maps/updateLocations'
 

@@ -1,25 +1,29 @@
 <div style='width: 100%;' class="text-center">
-  <div id="map" class="map_dimensions" >el mapa</div>
+  <div id="map" class="map_dimensions" ></div>
 </div>
 <script type="text/javascript">
 
 
-$(function(){
-  intializeMap();
+//$(function(){
+//  intializeMap();
 
-});
+//});
 
 function intializeMap(){
     handler = Gmaps.build('Google');
     handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+    updateMarkersLocation();
     markers = handler.addMarkers(<%=raw @hash.to_json %>);
     handler.bounds.extendWith(markers);
     handler.map.centerOn({lat: 5.0633619, lng: -75.5102252});
     handler.fitMapToBounds();
-    handler.getMap().setZoom(17);
-    setInterval(updateMarkers, 20000);
+    handler.getMap().setZoom(14);
+    setInterval(updateMarkersLocation, 20000);
+
   });
+
 }
+
 
 function updateMarkers(){
   $.ajax({
@@ -34,6 +38,23 @@ function updateMarkers(){
           },
           error: function(data) {
             console.log(data);
+          }
+        });
+}
+
+function updateMarkersLocation(){
+  $.ajax({
+          url: '/basic/updateVehicleLocations/',
+          type: 'GET',
+          data: {
+            bus_route_name: $('#bus_route_name').val()
+          },
+          success: function(data) {
+            handler.removeMarkers(markers)
+            markers = handler.addMarkers(data)
+          },
+          error: function(data) {
+            console.log(data)
           }
         });
 }

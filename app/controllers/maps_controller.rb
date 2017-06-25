@@ -20,7 +20,7 @@ class MapsController < ApplicationController
   end
 
   def updateLocations
-    @bus_locations = Vehicle.where.not(latitude: nil, longitude:nil ).last
+    @bus_locations = Vehicle.where.not(latitude: nil, longitude:nil )
      @hash = Gmaps4rails.build_markers(@bus_locations) do |bus_location, marker|
         marker.lat bus_location.latitude
         marker.lng bus_location.longitude
