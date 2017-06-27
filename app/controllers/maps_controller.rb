@@ -15,7 +15,7 @@ class MapsController < ApplicationController
                             <hr>
                             mas cosas blablabla <br>
                             <hr>
-                            Numero Lateral: #{bus_location.lateral_number} "
+                            Numero Lateral: #{bus_location.lateral} "
      end
   end
 
@@ -33,7 +33,7 @@ class MapsController < ApplicationController
                             <hr>
                             mas cosas blablabla <br>
                             <hr>
-                            Numero Lateral: #{bus_location.lateral_number} "
+                            Numero Lateral: #{bus_location.lateral} "
      end
 
     respond_to do |response|

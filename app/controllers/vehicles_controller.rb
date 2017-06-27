@@ -69,6 +69,6 @@ class VehiclesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def vehicle_params
-      params.require(:vehicle).permit(:name, :lateral_number, :registration_plate, :latitude, :longitude, :last_location)
+      params.require(:vehicle).permit(:name, :lateral, :registration_plate, :latitude, :longitude, :last_location)
     end
 end

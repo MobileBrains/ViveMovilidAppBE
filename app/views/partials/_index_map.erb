@@ -15,9 +15,9 @@ function intializeMap(){
     updateMarkersLocation();
     markers = handler.addMarkers(<%=raw @hash.to_json %>);
     handler.bounds.extendWith(markers);
-    handler.map.centerOn({lat: 5.0633619, lng: -75.5102252});
+
     handler.fitMapToBounds();
-    handler.getMap().setZoom(14);
+
     setInterval(updateMarkersLocation, 20000);
 
   });

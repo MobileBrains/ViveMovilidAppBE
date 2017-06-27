@@ -17,7 +17,7 @@ class BasicController < ApplicationController
     #                        <hr>
     #                        mas cosas blablabla <br>
     #                        <hr>
-    #                        Numero Lateral: #{bus_location.lateral_number} "
+    #                        Numero Lateral: #{bus_location.lateral} "
     # end
   end
 
@@ -37,7 +37,7 @@ class BasicController < ApplicationController
                             <hr>
                             mas cosas blablabla <br>
                             <hr>
-                            Numero Lateral: #{assignedRoutes.vehicle.lateral_number} "
+                            Numero Lateral: #{assignedRoutes.vehicle.lateral} "
      end
 
      respond_to do |response|

@@ -28,7 +28,7 @@
 
 one:
   name: MyString
-  lateral_number: MyString
+  lateral: MyString
   registration_plate: MyString
   latitude: 1.5
   longitude: 1.5
@@ -36,7 +36,7 @@ one:
 
 two:
   name: MyString
-  lateral_number: MyString
+  lateral: MyString
   registration_plate: MyString
   latitude: 1.5
   longitude: 1.5

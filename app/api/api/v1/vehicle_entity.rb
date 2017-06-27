@@ -5,7 +5,7 @@ module API
     class VehicleEntity < Grape::Entity
       expose :id
       expose :name
-      expose :lateral_number
+      expose :lateral
       expose :email
       expose :registration_plate
       expose :latitude
