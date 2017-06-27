@@ -46,6 +46,26 @@ module API
           end
         end
 
+        post "/vehiclelogin" do
+          email = permitted_params[:email]
+          pass = permitted_params[:pass]
+
+          user = Vehicle.find_by(email: email.downcase)
+          if user.nil?
+            return {success: false, errors: ["Invalid email."]}
+          end
+
+          unless user.valid_password?(pass)
+            return {success: false, errors: ["Invalid password."]}
+          else
+            # TODO: Check it
+            # user.ensure_authentication_token!
+            # user.save
+            authentication_token = Doorkeeper::AccessToken.create(application_id: current_application, resource_owner_id: user.id)
+            return {success: true, data: {user: user, user_access_token: authentication_token.token}}
+          end
+        end
+
         desc "Remove oauth token"
         params do
           requires :token, type: String, desc: "Oauth Token to remove"
