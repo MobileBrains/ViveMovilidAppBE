@@ -46,6 +46,11 @@ module API
           end
         end
 
+        desc "Vehicle login"
+        params do
+          requires :email, type: String, desc: "User email"
+          requires :pass, type: String, desc: "User password"
+        end
         post "/vehiclelogin" do
           email = permitted_params[:email]
           pass = permitted_params[:pass]
@@ -62,7 +67,7 @@ module API
             # user.ensure_authentication_token!
             # user.save
             authentication_token = Doorkeeper::AccessToken.create(application_id: current_application, resource_owner_id: user.id)
-            return {success: true, data: {user: user, user_access_token: authentication_token.token}}
+            return {success: true, data: {vehicle: user, user_access_token: authentication_token.token}}
           end
         end
 
