@@ -6,7 +6,7 @@ module API
       expose :id
       expose :latitude
       expose :longitude
-      expose :vehicle
+      expose :vehicle_id
       expose :created_at
     end
   end
