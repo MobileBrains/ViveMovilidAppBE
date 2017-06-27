@@ -15,9 +15,15 @@
 #
 
 class Vehicle < ApplicationRecord
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable, :validatable
   belongs_to :company, :class_name => "Company", foreign_key: :company_id
   has_many :location
   has_many :assigned_route
+
+  devise :database_authenticatable, :timeoutable
 
 
   reverse_geocoded_by :latitude, :longitude, :address => :last_location

@@ -6,6 +6,7 @@ module API
       mount API::Users
       mount API::Sessions
       mount API::Locations
+      mount API::Vehicles
     end
   end
 end

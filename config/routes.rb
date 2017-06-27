@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
 
+  #devise_for :vehicles
   use_doorkeeper
   devise_for :user
+  devise_for :vehicle
 
   resources :companies
   resources :bus_routes

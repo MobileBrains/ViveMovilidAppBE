@@ -5,6 +5,10 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+Doorkeeper::Application.create(name: "vivemovilidapp", uid: "e17ba14d0d2e15a6eaf2d42287386aba9288184c3c29a7a6d67e8541300e9514", secret: "1d55d44b6e6399cfd0763e75b4a489f2129dbba6eec341e62ee0cb5eff76633b", redirect_uri: "urn:ietf:wg:oauth:2.0:oob")
+
+
 Role.create([{ name: 'Admin' }, { name: 'MasterAdmin' }, { name: 'RegularUser' }, { name: 'Driver' }])
 
 masterAdmin = User.create({
