@@ -5,7 +5,7 @@ module API
       include APIDefaults
       include APIGuard
 
-      #guard_all!
+      guard_all!
 
       resource :users do
         desc "Return all users"

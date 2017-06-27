@@ -5,7 +5,7 @@ module API
       include APIDefaults
       include APIGuard
 
-      #guard_all!
+      guard_all!
 
       resource :vehicles do
 

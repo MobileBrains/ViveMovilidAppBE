@@ -5,7 +5,7 @@ module API
       include APIDefaults
       include APIGuard
 
-      #guard_all!
+      guard_all!
 
         desc "Update user location"
         params do
