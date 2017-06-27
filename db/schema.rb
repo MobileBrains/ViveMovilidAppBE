@@ -126,7 +126,7 @@ ActiveRecord::Schema.define(version: 20170626163216) do
 
   create_table "vehicles", force: :cascade do |t|
     t.string   "name"
-    t.string   "lateral_number"
+    t.string   "lateral"
     t.string   "registration_plate"
     t.float    "latitude"
     t.float    "longitude"

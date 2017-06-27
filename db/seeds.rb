@@ -52,8 +52,8 @@ vehicle = Vehicle.create({
               name: 's1234',
               lateral: 's1234',
               registration_plate: 'asd123',
-              email: 's1234@mail.com'
-              encrypted_password: 's12342017'
+              email: 's1234@mail.com',
+              password: 's12342017',
               company_id: company.id
        })
 
@@ -61,8 +61,8 @@ vehicle2 = Vehicle.create({
               name: 's1111',
               lateral: 's1111',
               registration_plate: 'zxc321',
-              email: 's1111@mail.com'
-              encrypted_password: 's11112017'
+              email: 's1111@mail.com',
+              password: 's11112017',
               company_id: company.id
        })
 
@@ -70,8 +70,8 @@ vehicle3 = Vehicle.create({
               name: 'l1111',
               lateral: 'l1111',
               registration_plate: 'zxc111',
-              email: 'l1111@mail.com'
-              encrypted_password: 'l11112017'
+              email: 'l1111@mail.com',
+              password: 'l11112017',
               company_id: company2.id
        })
 
