@@ -35,7 +35,7 @@ class BasicController < ApplicationController
             })
         marker.infowindow "Ruta: #{assignedRoutes.bus_route.name}<br>
                             <hr>
-                            mas cosas blablabla <br>
+                            #{assignedRoutes.bus_route.description} <br>
                             <hr>
                             Numero Lateral: #{assignedRoutes.vehicle.lateral} "
      end

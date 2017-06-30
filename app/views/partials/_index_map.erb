@@ -11,37 +11,22 @@
 
 function intializeMap(){
     handler = Gmaps.build('Google');
+
     handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
-    updateMarkersLocation();
+    updateMarkersLocation()
+    //updateMarkersLocation();
     markers = handler.addMarkers(<%=raw @hash.to_json %>);
     handler.bounds.extendWith(markers);
-    handler.map.centerOn({lat: 5.0633619, lng: -75.5102252});
+    //handler.map.centerOn({lat: 5.0633619, lng: -75.5102252});
     handler.fitMapToBounds();
-    handler.getMap().setZoom(14);
+    handler.getMap().setZoom(10);
     setInterval(updateMarkersLocation, 20000);
 
   });
 
 }
 
-
-function updateMarkers(){
-  $.ajax({
-          url: '/maps/updateLocations/',
-          type: 'POST',
-          data: {
-            //bus_route: $('#route_name').val();
-          },
-          success: function(data) {
-            handler.removeMarkers(markers)
-            markers = handler.addMarkers(data);
-          },
-          error: function(data) {
-            console.log(data);
-          }
-        });
-}
-
+//Center over Manizales
 function updateMarkersLocation(){
   $.ajax({
           url: '/basic/updateVehicleLocations/',
@@ -50,8 +35,41 @@ function updateMarkersLocation(){
             bus_route_name: $('#bus_route_name').val()
           },
           success: function(data) {
-            handler.removeMarkers(markers)
-            markers = handler.addMarkers(data)
+
+            if (typeof markers !== 'undefined') {
+              handler.removeMarkers(markers)
+            }
+            markers = handler.addMarkers(data);
+            handler.bounds.extendWith(markers);
+            handler.fitMapToBounds();
+            //handler.map.centerOn({lat: markers[0].getServiceObject().position.lat(),
+            //                      lng: markers[0].getServiceObject().position.lng()})
+
+          },
+          error: function(data) {
+            console.log(data)
+          }
+        });
+}
+
+//center on first marker
+function updateSelectedMarkersLocation(){
+  $.ajax({
+          url: '/basic/updateVehicleLocations/',
+          type: 'GET',
+          data: {
+            bus_route_name: $('#bus_route_name').val()
+          },
+          success: function(data) {
+
+            if (typeof markers !== 'undefined') {
+              handler.removeMarkers(markers)
+            }
+            markers = handler.addMarkers(data);
+            handler.bounds.extendWith(markers);
+            handler.map.centerOn({lat: markers[0].getServiceObject().position.lat(),
+                                  lng: markers[0].getServiceObject().position.lng()})
+
           },
           error: function(data) {
             console.log(data)
