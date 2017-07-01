@@ -1,6 +1,6 @@
 class BasicController < ApplicationController
   layout "application"
-  skip_before_action :authenticate_user!, :only => [:welcome, :updateVehicleLocations]
+  skip_before_action :authenticate_user!, :only => [:welcome, :updateVehicleLocations, :follow]
 
   def welcome
     #@bus_locations = Vehicle.where.not(latitude: nil, longitude:nil )
@@ -21,6 +21,32 @@ class BasicController < ApplicationController
     # end
   end
 
+  def follow
+    bus_id = params[:bus_id]
+    @vehicle = Vehicle.where(id: bus_id).where("created_at >= ?", Time.zone.now.beginning_of_day).last
+    @hash = Gmaps4rails.build_markers(@vehicle) do |vehicle, marker|
+        marker.lat vehicle.latitude
+        marker.lng vehicle.longitude
+        marker.picture({
+              "url" => "http://icons.iconarchive.com/icons/icons-land/vista-map-markers/32/Map-Marker-Marker-Outside-Chartreuse-icon.png",
+              "width" => 32,
+              "height" => 32
+            })
+        marker.infowindow "Ruta: #{vehicle.name}<br>
+                            <hr>
+                            #{vehicle.description} <br>
+                            <hr>
+                            Numero Lateral: #{vehicle.lateral}
+                            <hr>
+
+                            "
+     end
+
+     respond_to do |response|
+        response.json { render json: @hash}
+     end
+  end
+
   def updateVehicleLocations
     busRouteName = params[:bus_route_name]
     busRouteId = BusRoute.where(name: busRouteName).last.id
@@ -37,7 +63,11 @@ class BasicController < ApplicationController
                             <hr>
                             #{assignedRoutes.bus_route.description} <br>
                             <hr>
-                            Numero Lateral: #{assignedRoutes.vehicle.lateral} "
+                            Numero Lateral: #{assignedRoutes.vehicle.lateral}
+                            <hr>
+                            <a href='#{basic_follow_path}' class='btn-btn-default'>Follow</a>
+                            <button id='follow_#{assignedRoutes.vehicle.id}' class='follow_btn' onclick='intializeMaptoFollow(#{assignedRoutes.vehicle.id})' >Follow</button>
+                            "
      end
 
      respond_to do |response|

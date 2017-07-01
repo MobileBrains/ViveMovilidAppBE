@@ -26,6 +26,23 @@ function intializeMap(){
 
 }
 
+function intializeMaptoFollow(bus_id){
+    handler = Gmaps.build('Google');
+
+    handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+    updateSelectedMarkersLocation(bus_id)
+    //updateMarkersLocation();
+    markers = handler.addMarkers(<%=raw @hash.to_json %>);
+    handler.bounds.extendWith(markers);
+    //handler.map.centerOn({lat: 5.0633619, lng: -75.5102252});
+    handler.fitMapToBounds();
+
+    setInterval(updateSelectedMarkersLocation(bus_id), 20000);
+
+  });
+
+}
+
 //Center over Manizales
 function updateMarkersLocation(){
   $.ajax({
@@ -54,12 +71,12 @@ function updateMarkersLocation(){
 }
 
 //center on first marker
-function updateSelectedMarkersLocation(){
+function updateSelectedMarkersLocation(bus_id){
   $.ajax({
-          url: '/basic/updateVehicleLocations/',
+          url: '/basic/follow/',
           type: 'GET',
           data: {
-            bus_route_name: $('#bus_route_name').val()
+            bus_id: bus_id
           },
           success: function(data) {
 
