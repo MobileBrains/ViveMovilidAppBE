@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
         rails_admin_path
       elsif resource.has_role? :Admin
         #posiblemente a asiganar rutas
-        rails_admin_path
+        basic_welcome_path
       elsif resource.has_role? :RegularUser
         basic_welcome_path
       else
