@@ -1,7 +1,7 @@
 <div class="text-center" style="margin: 10px 10px;">
-            <label class="text_white">Selecciona la ruta que necesitas:</label>
+            <h1>2. Selecciona la ruta <label style="color:black"> y Listo!</label></h1>
             <%= collection_select(:bus_route, :name, @bus_routes, :name, :name, {prompt: true},
-            {:onchange => "intializeMap()", :class => "x"})%>
+            {:onchange => "intializeMap()", :class => "text-center"})%>
           </div>
 
 
@@ -15,9 +15,9 @@ select {
     -webkit-border-radius:4px;
     -moz-border-radius:4px;
     border-radius:4px;
-    -webkit-box-shadow: 0 3px 0 #ccc, 0 -1px #fff inset;
-    -moz-box-shadow: 0 3px 0 #ccc, 0 -1px #fff inset;
-    box-shadow: 0 3px 0 #ccc, 0 -1px #fff inset;
+    -webkit-box-shadow: 0 3px 0 #5bc0de, 0 -1px #fff inset;
+    -moz-box-shadow: 0 3px 0 #5bc0de, 0 -1px #fff inset;
+    box-shadow: 0 3px 0 #5bc0de, 0 -1px #fff inset;
     background: #f8f8f8;
     color:#888;
     border:none;

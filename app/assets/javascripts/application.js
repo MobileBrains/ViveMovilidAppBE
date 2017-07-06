@@ -18,6 +18,5 @@
 //= require bootstrap
 //= require underscore
 //= require gmaps/google
-//= require dataTables/jquery.dataTables
 //= require toastr
 //= require_tree .

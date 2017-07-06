@@ -1,10 +1,12 @@
 class BasicController < ApplicationController
   layout "application"
-  skip_before_action :authenticate_user!, :only => [:welcome, :updateVehicleLocations]
+  #TODO updateVehicleLocAtion quitarlo por que a alguien sin loguear solo landing y :busRoutes
+  skip_before_action :authenticate_user!, :only => [:landing, :updateVehicleLocations, :busRoutes]
 
   def welcome
     #@bus_locations = Vehicle.where.not(latitude: nil, longitude:nil )
     @bus_routes = BusRoute.all
+    @companies = Company.all
     # @hash = Gmaps4rails.build_markers(@bus_locations) do |bus_location, marker|
     #    marker.lat bus_location.latitude
     #    marker.lng bus_location.longitude
@@ -19,6 +21,10 @@ class BasicController < ApplicationController
     #                        <hr>
     #                        Numero Lateral: #{bus_location.lateral} "
     # end
+  end
+
+  def landing
+
   end
 
   def updateVehicleLocations

@@ -9,9 +9,11 @@ Doorkeeper.configure do
     # Example implementation:
     #   User.find_by_id(session[:user_id]) || redirect_to(new_user_session_url)
     env['warden'].authenticate(:user_strategy)
+    env['warden'].authenticate(:vehicle_strategy)
   end
 
   resource_owner_from_credentials do |routes|
+     env['warden'].authenticate(:user_strategy)
      env['warden'].authenticate(:user_strategy)
   end
 

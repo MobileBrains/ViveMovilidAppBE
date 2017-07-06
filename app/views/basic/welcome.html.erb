@@ -1,8 +1,15 @@
-<h1 class="text-center">Mejoramos tu movilidad.</h1>
-<hr>
-<p>Hemos creado un servicio que te permite conocer la ubicacion de los buses con la <strong>ruta</strong> que necesitas, podras visualizar los vehiculos sobre el mapa de tu ciudad donde actualizaremos su ubicacion cada 20 segundos. :D <strong>disfruta tu tiempo...</strong></p>
-<div class="container-fluid">
+
+<div class="container-fluid text-center">
+  <h1 class="text-center">Mejoramos tu movilidad.</h1>
+  <label ><strong >en 2 pasos!</strong></label>
+  <hr>
+  <%= render 'partials/bus_routes_search' %>
+  <hr>
   <%= render 'partials/routes' %>
+  <div id="info">
+    <p><strong style="color:#167fb9">Recuerda...</strong><strong>Cada 20 segundos actualizamos su ubicacion automaticamente.</strong>
+  </div>
+  <hr>
   <%= render 'partials/index_map' %>
 </div>
 

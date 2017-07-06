@@ -16,7 +16,10 @@ module ViveMovilidAppBE
     config.i18n.default_locale = :en
 
     config.paths.add File.join('app', 'api'), glob: File.join('**', '*.rb')
+    config.assets.paths << Rails.root.join("app", "assets", "fonts")
     config.autoload_paths += Dir[Rails.root.join('app', 'api' , '*')]
+
+
   end
 end
 

@@ -11,7 +11,7 @@
  * It is generally better to create a new file per style scope.
  # SASS
  *= require devise_bootstrap_views
- *= require dataTables/jquery.dataTables
+
  *
  */
 
@@ -21,4 +21,6 @@
 @import "custom_layout";
 @import "custom_footer";
 @import "maps";
+@import "landing";
 
+@import url('https://fonts.googleapis.com/css?family=Lobster');

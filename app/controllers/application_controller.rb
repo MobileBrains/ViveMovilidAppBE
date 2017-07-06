@@ -3,16 +3,17 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user!
 
   #acces to landingPage to not Authenticated user
-  skip_before_action :authenticate_user!, :only => [:welcome]
+  skip_before_action :authenticate_user!, :only => [:landing]
 
   def after_sign_in_path_for(resource)
     if resource.is_a?(User)
       if resource.has_role? :MasterAdmin
         rails_admin_path
       elsif resource.has_role? :Admin
+        #posiblemente a asiganar rutas
         rails_admin_path
       elsif resource.has_role? :RegularUser
-        root_path
+        basic_welcome_path
       else
         root_path
       end

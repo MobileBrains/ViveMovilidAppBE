@@ -4,9 +4,7 @@
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <a class="navbar-brand" href="">
-    <%= image_tag("vive_brand.png", :alt => "Vive movilidad") %>
-  </a>
+  <%= link_to image_tag("vive_brand.png"), basic_landing_path, :class=>"icon-puzzle-piece icon-2x", :alt => "Vive movilidad" %>
 
   <div class="collapse navbar-collapse justify-content-end pull-right " id="navbarSupportedContent">
       <form class="form-inline my-2 my-lg-0">
@@ -14,10 +12,11 @@
           <% if current_user.has_role? :MasterAdmin %>
             <%= link_to rails_admin_path, class: 'btn btn-outline-info my-2 my-sm-0 margin_button' do %>Go to Dashboad<% end %>
           <% end %>
+          <%= link_to('Find my bus', basic_welcome_path,method: :get, class: 'btn btn-outline-info my-2 my-sm-0 margin_button') %>
+          <%= link_to('Edit registration', edit_user_registration_path, class: 'btn btn-outline-info my-2 my-sm-0 margin_button') %>
           <% if current_user.has_role? :Admin %>
             <%= link_to rails_admin_path, class: 'btn btn-outline-success my-2 my-sm-0 margin_button' do %>Go to Dashboad<% end %>
           <% end %>
-          <%= link_to('Edit registration', edit_user_registration_path, class: 'btn btn-outline-info my-2 my-sm-0 margin_button') %>
           <%= link_to('Logout', destroy_user_session_path, class: 'btn btn-outline-danger my-2 my-sm-0 margin_button', :method => :delete) %>
         <% else %>
           <%= link_to('Register', new_user_registration_path, class: 'btn btn-outline-info my-2 my-sm-0 margin_button')  %>

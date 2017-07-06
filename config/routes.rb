@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
   #devise_for :vehicles
   use_doorkeeper
   devise_for :user
@@ -12,9 +13,11 @@ Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/dashboard', as: 'rails_admin'
   mount API::Base, at: "/viveApi"
 
-  root to: "basic#welcome"
+  root to: "basic#landing"
 
   get 'maps/index_map'
+
+  get 'basic/landing'
   get 'basic/welcome'
   get 'basic/updateVehicleLocations'
 
