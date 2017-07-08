@@ -53,6 +53,7 @@
 
     <%= render 'partials/navbar' %>
 
+
     <div class="container-fluid margin-bottom-footer" style="margin-top: 80px">
           <div class="col-md-12">
           <% unless flash.empty? %>
@@ -63,6 +64,7 @@
               <% end %>
             </script>
           <% end %>
+
           <%= bootstrap_flash %>
 
           <%= yield %>
