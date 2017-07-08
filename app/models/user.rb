@@ -15,15 +15,26 @@
 #  last_sign_in_ip        :inet
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
+#  name                   :string
+#  document               :string
+#  phone                  :integer
+#  birthdate              :date
+#  neighborhood           :string
 #
 
 class User < ApplicationRecord
   rolify
-  has_many :assigned_route
+  has_many :assigned_route, :class_name => "AssignedRoute", foreign_key: :assigned_by_id
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
+  after_create :assign_default_role
+
+  def assign_default_role
+    self.add_role(:RegularUser) if self.roles.blank?
+  end
 
 
 end

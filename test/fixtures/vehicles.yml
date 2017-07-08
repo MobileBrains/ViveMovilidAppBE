@@ -4,7 +4,7 @@
 #
 #  id                     :integer          not null, primary key
 #  name                   :string
-#  lateral_number         :string
+#  lateral                :string
 #  registration_plate     :string
 #  latitude               :float
 #  longitude              :float

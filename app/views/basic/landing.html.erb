@@ -4,7 +4,7 @@
 </div>
 <hr>
 <div class="text-center landing-info" id="landing-info">
-    <p>Hemos creado un servicio que permite <strong>visualizar</strong> sobre el mapa de <strong>Manizales</strong> <br>
+    <p>Hemos creado un servicio que te permite <strong>visualizar</strong> sobre el mapa de <strong>Manizales</strong> <br>
     <strong>la ubicacion de los buses</strong> con la <strong>ruta</strong> que <strong>selecciones</strong></p>
     <p>No te preocupes por refrescar el mapa...<br>
     <strong style="color:#167fb9">Automaticamente </strong><strong>actualizaremos su ubicacion cada 20 segundos :D disfruta tu tiempo...</strong>
@@ -15,9 +15,11 @@
   <%= image_submit_tag("landing_map.png", :id => "img_step2", :name => "img_step2", :class => "tuto_image", :disabled => false) %>
 </div>
 
-<div class="text-center" >
-  <%= link_to('Registrarme', new_user_registration_path, class: 'btn btn-outline-info  margin_button vive_register_button')  %>
-</div>
+<% if !user_signed_in? %>
+  <div class="text-center" >
+    <%= link_to('Registrarme', new_user_registration_path, class: 'btn btn-outline-info  margin_button vive_register_button')  %>
+  </div>
+<% end %>
 
 <div class="text-center" style="margin-top: 20px">
   <i>ey! Que no se te pase el Bus.</i> <strong> A fresco! yo uso <%= image_submit_tag("vive_brand.png", :id => "vive_brand", :name => "vive_brand", :class => "vive_brand-button", :disabled => false) %></time></strong>
@@ -42,6 +44,12 @@ if (horas <= 11) {
 if (horas >=12 && horas <= 18) {
     document.getElementById("landing_title").innerHTML = "Buenas tardes";
   $('#landing_title').innerHTML = "buenas tardes"
+}
+if (horas >=19 && horas <= 23) {
+  document.getElementById("landing_title").innerHTML = "Buenas noches";
+}
+else{
+  document.getElementById("landing_title").innerHTML = "Bienvenido";
 }
 
 
