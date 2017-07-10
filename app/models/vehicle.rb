@@ -39,8 +39,8 @@ class Vehicle < ApplicationRecord
 
   def assign_default_location
     if !self.latitude? || !self.longitude?
-      self.latitude = '5.075555'
-      self.longitude = '-75.51883'
+      self.latitude = '5.0686937'
+      self.longitude = '-75.5186655'
     end
   end
 
