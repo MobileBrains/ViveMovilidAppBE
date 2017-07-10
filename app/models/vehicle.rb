@@ -35,6 +35,12 @@ class Vehicle < ApplicationRecord
 
   devise :database_authenticatable, :timeoutable
 
+  before_save :assign_default_location
+
+  def assign_default_location
+    self.latitude = '5.075555'
+    self.longitude = '-75.51883'
+  end
 
   reverse_geocoded_by :latitude, :longitude, :address => :last_location
   after_validation :reverse_geocode, if: -> {self.longitude.present? and self.latitude.present? and self.longitude_changed? or self.latitude_changed?  }   # auto-fetch address

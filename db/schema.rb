@@ -133,18 +133,18 @@ ActiveRecord::Schema.define(version: 20170707001344) do
     t.string   "name"
     t.string   "lateral"
     t.string   "registration_plate"
-    t.float    "latitude"
-    t.float    "longitude"
+    t.float    "latitude",               default: 5.0730109
+    t.float    "longitude",              default: -75.5314799
     t.string   "last_location"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.datetime "created_at",                                   null: false
+    t.datetime "updated_at",                                   null: false
     t.integer  "company_id"
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
+    t.string   "email",                  default: "",          null: false
+    t.string   "encrypted_password",     default: "",          null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",          default: 0,           null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.inet     "current_sign_in_ip"
