@@ -12,24 +12,44 @@ Doorkeeper::Application.create(name: "vivemovilidapp", uid: "e17ba14d0d2e15a6eaf
 Role.create([{ name: 'Admin' }, { name: 'MasterAdmin' }, { name: 'RegularUser' }, { name: 'Driver' }])
 
 masterAdmin = User.create({
+              name: 'master admin name',
+              document: '555555',
+              phone: '55555',
+              birthdate: '25 dic 2005',
+              neighborhood:'le franc',
               email: 'masteradmin@mail.com',
               password: '1234321',
               roles: [Role.find_by_name('MasterAdmin')]
               })
 
 admin = User.create({
+              name: 'admin',
+              document: '123333',
+              phone: '23123123',
+              birthdate: '26 dic 2017',
+              neighborhood:'le franc',
               email: 'admin@mail.com',
               password: '1234321',
               roles: [Role.find_by_name('Admin')]
               })
 
 driver = User.create({
+              name: 'conductor',
+              document: '33333',
+              phone: '23123123',
+              birthdate: '34 dic 2017',
+              neighborhood:'cumbre',
               email: 'driver@mail.com',
               password: '1234321',
               roles: [Role.find_by_name('Driver')]
               })
 
 regularUser = User.create({
+              name: 'regular user',
+              document: '144444',
+              phone: '23444444',
+              birthdate: '4 dic 2001',
+              neighborhood:'le franc',
               email: 'user@mail.com',
               password: '1234321',
               roles: [Role.find_by_name('RegularUser')]
