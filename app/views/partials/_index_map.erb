@@ -41,8 +41,9 @@ function updateMarkersLocation(){
             }
             markers = handler.addMarkers(data);
             handler.bounds.extendWith(markers);
-            handler.getMap().setZoom(16);
             handler.fitMapToBounds();
+            handler.getMap().setZoom(16);
+
             //handler.map.centerOn({lat: markers[0].getServiceObject().position.lat(),
             //                      lng: markers[0].getServiceObject().position.lng()})
 
