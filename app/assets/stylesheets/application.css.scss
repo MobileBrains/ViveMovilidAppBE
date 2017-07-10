@@ -26,12 +26,12 @@
 @import url('https://fonts.googleapis.com/css?family=Lobster');
 
 
-.drop-red-style {
+.dropdown-red-style{
   background-color: #292b2c;
   border-color: #d9534f;
-  }
+  color: white !important;
+}
 
-.drop-style {
-  background-color: #292b2c;
-  border-color: #5bc0de;
-  }
+.dropdown-red-style:hover {
+  background-color: #d9534f;
+}

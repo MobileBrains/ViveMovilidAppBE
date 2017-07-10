@@ -36,21 +36,20 @@
                 + currentdate.getSeconds();
   var horas = currentdate.getHours();
 
-if (horas <= 11) {
-  document.getElementById("landing_title").innerHTML = "Buenos dias!";
+  if (horas >= 0 && horas <= 11) {
+    document.getElementById("landing_title").innerHTML = "Buenos dias!";
 
-  $('#landing_title').innerHTML = "buenos dias"
-}
-if (horas >=12 && horas <= 18) {
-    document.getElementById("landing_title").innerHTML = "Buenas tardes";
-  $('#landing_title').innerHTML = "buenas tardes"
-}
-if (horas >=19 && horas <= 23) {
-  document.getElementById("landing_title").innerHTML = "Buenas noches";
-}
-else{
-  document.getElementById("landing_title").innerHTML = "Bienvenido";
-}
-
+    $('#landing_title').innerHTML = "buenos dias"
+  }
+  else if (horas >=12 && horas <= 18) {
+      document.getElementById("landing_title").innerHTML = "Buenas tardes";
+    $('#landing_title').innerHTML = "buenas tardes"
+  }
+  else if (horas >=19 && horas <= 23) {
+    document.getElementById("landing_title").innerHTML = "Buenas noches";
+  }
+  else{
+    document.getElementById("landing_title").innerHTML = "Bienvenido";
+  }
 
 </script>

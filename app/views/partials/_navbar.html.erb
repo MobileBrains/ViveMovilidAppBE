@@ -10,30 +10,35 @@
       <form class="form-inline my-2 my-lg-0">
         <% if user_signed_in? %>
 
-
           <%= link_to('Find my bus', basic_welcome_path,method: :get, class: 'btn btn-outline-info my-2 my-sm-0 margin_button') %>
-          <%= link_to('Edit registration', edit_user_registration_path, class: 'btn btn-outline-info my-2 my-sm-0 margin_button') %>
-          <% if current_user.has_role? :Admin %>
-            <%= link_to rails_admin_path, class: 'btn btn-outline-success my-2 my-sm-0 margin_button' do %>Go to Dashboad<% end %>
-          <% end %>
 
           <div class="dropdown show btn-outline-danger margin_button ">
-            <a class="btn btn-secondary dropdown-toggle drop-red-style" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <%= current_user.email %>
-            </a>
-            <% if current_user.has_role? :MasterAdmin %>
-              <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                <%= link_to rails_admin_path, class: 'dropdown-item' do %>Go to Dashboad<% end %>
-                <a class="dropdown-item" href="#">Another action</a>
-                <a class="dropdown-item" href="#">Something else here</a>
-                <%= link_to('Logout', destroy_user_session_path, class: 'btn btn-outline-danger my-2 my-sm-0 margin_button', :method => :delete) %>
+              <a class="btn dropdown-toggle dropdown-red-style" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <%= current_user.email %>
+              </a>
+              <div class="dropdown-menu text-center col-md-12" aria-labelledby="dropdownMenuLink">
+                <% if current_user.has_role? :MasterAdmin %>
+
+                  <%= link_to rails_admin_path, class: 'dropdown-item' do %>Go to Dashboad<% end %>
+                  <%= link_to('Edit registration', edit_user_registration_path, class: 'dropdown-item') %>
+                  <%= link_to('Logout', destroy_user_session_path, class: 'btn btn-danger col-md-12', :method => :delete) %>
+
+                <% end %>
+
+                <% if current_user.has_role? :Admin %>
+                  <%= link_to rails_admin_path, class: 'dropdown-item' do %>Go to Dashboad<% end %>
+                  <%= link_to('Edit registration', edit_user_registration_path, class: 'dropdown-item') %>
+                  <%= link_to('Logout', destroy_user_session_path, class: 'btn btn-outline-danger my-2 my-sm-0 margin_button', :method => :delete) %>
+                <% end %>
+
+                <% if current_user.has_role? :RegularUser %>
+                  <%= link_to('Edit registration', edit_user_registration_path, class: 'dropdown-item') %>
+                  <%= link_to('Logout', destroy_user_session_path, class: 'btn btn-outline-danger my-2 my-sm-0 margin_button', :method => :delete) %>
+                <% end %>
               </div>
-
-            <% end %>
-
-
           </div>
         <% else %>
+
           <%= link_to('Register', new_user_registration_path, class: 'btn btn-outline-info my-2 my-sm-0 margin_button')  %>
           <%= link_to('Login', new_user_session_path, class: 'btn btn-outline-info  my-2 my-sm-0 margin_button login_button')  %>
         <% end %>
