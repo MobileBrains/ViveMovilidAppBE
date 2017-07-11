@@ -44,6 +44,10 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-tether', '>= 1.3.3'
 end
 
+# Font awasome Icons
+gem "font-awesome-rails"
+gem 'font-awesome-sass'
+
 # User Authentication
 gem 'devise'
 # Styled devise views
