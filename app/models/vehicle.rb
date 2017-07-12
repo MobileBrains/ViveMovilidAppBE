@@ -1,4 +1,4 @@
-# == Schema Information
+  # == Schema Information
 #
 # Table name: vehicles
 #
@@ -33,9 +33,11 @@ class Vehicle < ApplicationRecord
   has_many :location
   has_many :assigned_route
 
-  devise :database_authenticatable, :timeoutable
+  reverse_geocoded_by :latitude, :longitude, :address => :last_location
+  after_validation :reverse_geocode, if: -> {self.longitude.present? and self.latitude.present? and self.longitude_changed? or self.latitude_changed?  }   # auto-fetch address
 
   before_save :assign_default_location
+
 
   def assign_default_location
     if !self.latitude? || !self.longitude?
@@ -44,8 +46,5 @@ class Vehicle < ApplicationRecord
     end
   end
 
-
-  reverse_geocoded_by :latitude, :longitude, :address => :last_location
-  after_validation :reverse_geocode, if: -> {self.longitude.present? and self.latitude.present? and self.longitude_changed? or self.latitude_changed?  }   # auto-fetch address
 end
 
