@@ -14,12 +14,13 @@ class Ability
     if user.has_role? (:Admin)
       can :access, :rails_admin       # only allow admin users to access Rails Admin
       can :dashboard, :all
-      can [:read], BusRoute
-      can [:read], Vehicle
+      can [:read, :create], BusRoute
+      can [:read, :create], Vehicle
       can [:read], Company
       can [:read, :create, :update], AssignedRoute
       can [:read, :create], User
       can [:read], Role
+      can [:read], Location
     end
 
     if user.has_role? (:RegularUser)

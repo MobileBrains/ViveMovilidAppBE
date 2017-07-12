@@ -43,7 +43,9 @@ class BasicController < ApplicationController
                             <hr>
                             #{assignedRoutes.bus_route.description} <br>
                             <hr>
-                            Numero Lateral: #{assignedRoutes.vehicle.lateral} "
+                            Numero Lateral: #{assignedRoutes.vehicle.lateral} <br>
+                            <hr>
+                            Ubicacion tomada a las: #{assignedRoutes.vehicle.updated_at} "
      end
 
      respond_to do |response|
