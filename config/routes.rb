@@ -16,12 +16,18 @@ Rails.application.routes.draw do
   root to: "basic#landing"
 
   get 'maps/index_map'
+  get 'maps/monitorFleet'
+  get 'maps/updateMonitorFleet'
+  get 'maps/updateMonitorFleetPerBusRoute'
+  post 'maps/updateLocations'
+
 
   get 'basic/landing'
   get 'basic/welcome'
   get 'basic/updateVehicleLocations'
 
-  post 'maps/updateLocations'
+
+
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

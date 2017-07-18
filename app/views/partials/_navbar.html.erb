@@ -10,37 +10,58 @@
       <form class="form-inline my-2 my-lg-0">
         <% if user_signed_in? %>
 
-          <%= link_to('Find my bus', basic_welcome_path,method: :get, class: 'btn btn-outline-info my-2 my-sm-0 margin_button') %>
+          <%= link_to basic_welcome_path, class: 'btn btn-outline-info my-2 my-sm-0 margin_button', method: :get do %>
+            Find Bus  <%=fa_icon "bus" %>
+          <% end %>
+          <% if current_user.has_role? :Admin %>
+            <%= link_to maps_monitorFleet_path, class: 'btn btn-outline-info my-2 my-sm-0 margin_button' do %>Monitoreo <%=fa_icon "eye" %>.<%=fa_icon "eye" %> <% end %>
 
-          <div class="dropdown show btn-outline-danger margin_button ">
+          <% end%>
+
+          <div class="dropdown btn-outline-danger margin_button ">
               <a class="btn dropdown-toggle dropdown-red-style" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <%= current_user.email %>
+                <%= current_user.email %> <%=fa_icon "user" %>
               </a>
               <div class="dropdown-menu text-center col-md-12" aria-labelledby="dropdownMenuLink">
                 <% if current_user.has_role? :MasterAdmin %>
 
-                  <%= link_to rails_admin_path, class: 'dropdown-item' do %>Go to Dashboad<% end %>
-                  <%= link_to('Edit registration', edit_user_registration_path, class: 'dropdown-item') %>
-                  <%= link_to('Logout', destroy_user_session_path, class: 'btn btn-danger col-md-12', :method => :delete) %>
+                  <%= link_to rails_admin_path, class: 'dropdown-item' do %>Go to Dashboad <%=fa_icon "gear " %><% end %>
+                  <%= link_to edit_user_registration_path, class: 'dropdown-item' do %>
+                    Edit User <%=fa_icon "pencil-square-o" %>
+                  <%end%>
+                  <%= link_to destroy_user_session_path, class: 'btn btn-danger col-md-12', :method => :delete do %>
+                    Exit <%=fa_icon "sign-out" %>
+                  <% end %>
 
                 <% end %>
 
                 <% if current_user.has_role? :Admin %>
-                  <%= link_to rails_admin_path, class: 'dropdown-item' do %>Go to Dashboad<% end %>
-                  <%= link_to('Edit registration', edit_user_registration_path, class: 'dropdown-item') %>
-                  <%= link_to('Logout', destroy_user_session_path, class: 'btn btn-outline-danger my-2 my-sm-0 margin_button', :method => :delete) %>
+
+                  <%= link_to rails_admin_path, class: 'dropdown-item' do %>Go to Dashboad <%=fa_icon "gear " %>  <% end %>
+                  <%= link_to edit_user_registration_path, class: 'dropdown-item' do %>
+                    Edit User <%=fa_icon "pencil-square-o" %>
+                  <%end%>
+                  <%= link_to destroy_user_session_path, class: 'btn btn-danger col-md-12', :method => :delete do %>
+                    Exit <%=fa_icon "sign-out" %>
+                  <% end %>
                 <% end %>
 
                 <% if current_user.has_role? :RegularUser %>
                   <%= link_to('Edit registration', edit_user_registration_path, class: 'dropdown-item') %>
-                  <%= link_to('Logout', destroy_user_session_path, class: 'btn btn-outline-danger my-2 my-sm-0 margin_button', :method => :delete) %>
+                  <%= link_to destroy_user_session_path, class: 'btn btn-danger col-md-12', :method => :delete do %>
+                    Exit <%=fa_icon "sign-out" %>
+                  <% end %>
+
                 <% end %>
               </div>
           </div>
         <% else %>
 
-          <%= link_to('Register', new_user_registration_path, class: 'btn btn-outline-info my-2 my-sm-0 margin_button')  %>
-          <%= link_to('Login', new_user_session_path, class: 'btn btn-outline-info  my-2 my-sm-0 margin_button login_button')  %>
+          <%= link_to new_user_registration_path, class: 'btn btn-outline-info my-2 my-sm-0 margin_button' do%> Registrarme <%= fa_icon "pencil"%>
+          <%end%>
+          <%= link_to new_user_session_path, class: 'btn btn-outline-info  my-2 my-sm-0 margin_button login_button' do  %>Entrar <%= fa_icon "sign-in"%>
+          <%end%>
+
         <% end %>
       </form>
   </div>

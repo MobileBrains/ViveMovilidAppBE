@@ -16,7 +16,7 @@
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #  name                   :string
-#  document               :string
+#  document               :integer
 #  phone                  :integer
 #  birthdate              :date
 #  neighborhood           :string

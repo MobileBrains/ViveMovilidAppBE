@@ -20,8 +20,9 @@ class ApplicationController < ActionController::Base
       if resource.has_role? :MasterAdmin
         rails_admin_path
       elsif resource.has_role? :Admin
-        #posiblemente a asiganar rutas
-        basic_welcome_path
+        #posiblemente a asiganar rutas o a visualizar flota
+        #_path
+        root_path
       elsif resource.has_role? :RegularUser
         basic_welcome_path
       else

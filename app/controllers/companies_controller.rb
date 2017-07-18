@@ -7,6 +7,10 @@ class CompaniesController < ApplicationController
     @companies = Company.all
   end
 
+  def fleet
+
+  end
+
   # GET /companies/1
   # GET /companies/1.json
   def show

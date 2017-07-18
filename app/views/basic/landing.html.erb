@@ -15,9 +15,16 @@
   <%= image_submit_tag("landing_map.png", :id => "img_step2", :name => "img_step2", :class => "tuto_image", :disabled => false) %>
 </div>
 
-<% if !user_signed_in? %>
+<% if user_signed_in? %>
+  <div class="text-center">
+    <%= link_to basic_welcome_path, class: 'btn btn-outline-info my-2 my-sm-0 margin_button btn btn-outline-info my-2 my-sm-0 margin_button vive_register_button', method: :get do %>
+            Find bus  <%=fa_icon "bus" %>
+          <% end %>
+  </div>
+<% else %>
   <div class="text-center" >
-    <%= link_to('Registrarme', new_user_registration_path, class: 'btn btn-outline-info  margin_button vive_register_button')  %>
+    <%= link_to new_user_registration_path, class: 'btn btn-outline-info my-2 my-sm-0 margin_button vive_register_button' do%> Registrarme <%= fa_icon "pencil"%>
+          <%end%>
   </div>
 <% end %>
 

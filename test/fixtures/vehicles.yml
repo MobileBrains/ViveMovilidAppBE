@@ -6,8 +6,8 @@
 #  name                   :string
 #  lateral                :string
 #  registration_plate     :string
-#  latitude               :float
-#  longitude              :float
+#  latitude               :float            default(5.0730109)
+#  longitude              :float            default(-75.5314799)
 #  last_location          :string
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
