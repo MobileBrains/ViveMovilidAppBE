@@ -1,68 +1,65 @@
 <nav class="navbar fixed-top navbar-toggleable-md navbar-inverse bg-inverse">
-  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
 
-  <%= link_to image_tag("vive_brand.png"), basic_landing_path, :class=>"icon-puzzle-piece icon-2x", :alt => "Vive movilidad" %>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-  <div class="collapse navbar-collapse justify-content-end pull-right " id="navbarSupportedContent">
-      <form class="form-inline my-2 my-lg-0">
-        <% if user_signed_in? %>
+    <%= link_to image_tag("vive_brand.png"), basic_landing_path, :class=>"icon-puzzle-piece icon-2x", :alt => "Vive movilidad" %>
 
-          <%= link_to basic_welcome_path, class: 'btn btn-outline-info my-2 my-sm-0 margin_button', method: :get do %>
-            Find Bus  <%=fa_icon "bus" %>
+    <div class="collapse navbar-collapse justify-content-end pull-right " id="navbarSupportedContent">
+      <ul class="nav navbar-nav navbar-right ">
+          <% if user_signed_in? %>
+              <li class="text-center">
+                  <%= link_to basic_welcome_path, class: 'btn btn-outline-info my-2 my-sm-0 margin_button menuBtn', method: :get do %>
+                    Ubicar Bus  <%=fa_icon "bus" %>
+                  <% end %>
+              </li>
+
+              <% if current_user.has_role? :Admin %>
+                <li>
+                  <%= link_to maps_monitorFleet_path, class: 'btn btn-outline-info my-2 my-sm-0 margin_button menuBtn' do %>Monitoreo <%=fa_icon "eye" %>.<%=fa_icon "eye" %> <% end %>
+                </li>
+              <% end%>
+
+              <li class="dropdown ">
+                  <a href="#"  class="btn dropdown-toggle dropdown-red-style margin_button menuBtn" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="button">
+                      <%= current_user.email %> <%=fa_icon "user" %>
+                  </a>
+
+                  <ul class="dropdown-menu">
+                      <% if user_signed_in? %>
+                          <li>
+                            <%= link_to edit_user_registration_path, class: 'dropdown-item' do %>
+                              Editar Usuario <%=fa_icon "pencil-square-o" %>
+                            <%end%>
+                          </li>
+                          <li>
+                            <%= link_to rails_admin_path, class: 'dropdown-item' do %>
+                              Administracion y configuraciones  <%=fa_icon "gear " %>
+                            <% end %>
+                          </li>
+                          <hr>
+                          <li>
+                          <%= link_to destroy_user_session_path, class: 'btn btn-danger col-md-12', :method => :delete do %>
+                              Salir <%=fa_icon "sign-out" %>
+                            <% end %>
+                          </li>
+                      <%end%>
+                  </ul>
+              </li>
+          <%else%>
+              <li class="margin_button">
+                  <%= link_to new_user_registration_path, class: 'btn btn-outline-info my-2 my-sm-0 margin_button menuBtn' do%> Registrarme <%= fa_icon "pencil"%>
+                  <%end%>
+
+              </li>
+              <li class="margin_button" >
+                  <%= link_to new_user_session_path, class: 'btn btn-outline-info  my-2 my-sm-0 margin_butto menuBtnn login_button menuBtn'  do  %>Entrar <%= fa_icon "sign-in"%>
+                  <%end%>
+              </li>
           <% end %>
-          <% if current_user.has_role? :Admin %>
-            <%= link_to maps_monitorFleet_path, class: 'btn btn-outline-info my-2 my-sm-0 margin_button' do %>Monitoreo <%=fa_icon "eye" %>.<%=fa_icon "eye" %> <% end %>
+      </ul>
+    </div>
 
-          <% end%>
-
-          <div class="dropdown btn-outline-danger margin_button ">
-              <a class="btn dropdown-toggle dropdown-red-style" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <%= current_user.email %> <%=fa_icon "user" %>
-              </a>
-              <div class="dropdown-menu text-center col-md-12" aria-labelledby="dropdownMenuLink">
-                <% if current_user.has_role? :MasterAdmin %>
-
-                  <%= link_to rails_admin_path, class: 'dropdown-item' do %>Go to Dashboad <%=fa_icon "gear " %><% end %>
-                  <%= link_to edit_user_registration_path, class: 'dropdown-item' do %>
-                    Edit User <%=fa_icon "pencil-square-o" %>
-                  <%end%>
-                  <%= link_to destroy_user_session_path, class: 'btn btn-danger col-md-12', :method => :delete do %>
-                    Exit <%=fa_icon "sign-out" %>
-                  <% end %>
-
-                <% end %>
-
-                <% if current_user.has_role? :Admin %>
-
-                  <%= link_to rails_admin_path, class: 'dropdown-item' do %>Go to Dashboad <%=fa_icon "gear " %>  <% end %>
-                  <%= link_to edit_user_registration_path, class: 'dropdown-item' do %>
-                    Edit User <%=fa_icon "pencil-square-o" %>
-                  <%end%>
-                  <%= link_to destroy_user_session_path, class: 'btn btn-danger col-md-12', :method => :delete do %>
-                    Exit <%=fa_icon "sign-out" %>
-                  <% end %>
-                <% end %>
-
-                <% if current_user.has_role? :RegularUser %>
-                  <%= link_to('Edit registration', edit_user_registration_path, class: 'dropdown-item') %>
-                  <%= link_to destroy_user_session_path, class: 'btn btn-danger col-md-12', :method => :delete do %>
-                    Exit <%=fa_icon "sign-out" %>
-                  <% end %>
-
-                <% end %>
-              </div>
-          </div>
-        <% else %>
-
-          <%= link_to new_user_registration_path, class: 'btn btn-outline-info my-2 my-sm-0 margin_button' do%> Registrarme <%= fa_icon "pencil"%>
-          <%end%>
-          <%= link_to new_user_session_path, class: 'btn btn-outline-info  my-2 my-sm-0 margin_button login_button' do  %>Entrar <%= fa_icon "sign-in"%>
-          <%end%>
-
-        <% end %>
-      </form>
-  </div>
 </nav>

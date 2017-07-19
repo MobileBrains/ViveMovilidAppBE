@@ -1,6 +1,5 @@
 <div id="landing_title_box" class="text-center">
   <h1 id="landing_title" class="landing_title"></h1>
-  <strong>Bienvenid@</strong>
 </div>
 <hr>
 <div class="text-center landing-info" id="landing-info">
@@ -18,7 +17,7 @@
 <% if user_signed_in? %>
   <div class="text-center">
     <%= link_to basic_welcome_path, class: 'btn btn-outline-info my-2 my-sm-0 margin_button btn btn-outline-info my-2 my-sm-0 margin_button vive_register_button', method: :get do %>
-            Find bus  <%=fa_icon "bus" %>
+            Ubicar bus  <%=fa_icon "bus" %>
           <% end %>
   </div>
 <% else %>

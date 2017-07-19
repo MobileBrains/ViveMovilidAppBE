@@ -17,9 +17,10 @@
         <%= f.label :phone %>
         <%= f.number_field :phone, autofocus: true, class: 'form-control' %>
       </div>
+
       <div class="form-group">
         <%= f.label :birthdate %>
-        <%= f.datetime_field :birthdate, autofocus: true, class: 'form-control' %>
+        <%= f.date_field :birthdate, autofocus: true, class: 'form-control' %>
       </div>
       <div class="form-group">
         <%= f.label :neighborhood %>
@@ -43,3 +44,14 @@
   </div>
 </div>
 <%= render 'devise/shared/links' %>
+
+
+<script type="text/javascript">
+    $(function () {
+        $('#user_birthdate').datetimepicker({
+            format: 'YYYY-MM-DD ',
+            locale: 'es'
+
+        });
+    });
+</script>

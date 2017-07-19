@@ -16,6 +16,7 @@
  */
 
 @import "toastr";
+@import 'bootstrap-datetimepicker';
 @import "bootstrap";
 @import "font-awesome";
 @import "custom_navbar";
@@ -35,4 +36,17 @@
 
 .dropdown-red-style:hover {
   background-color: #d9534f;
+}
+
+.dropdown-menu{
+  left: -100px;
+}
+
+.menuBtn{
+  width: 100%;
+  border: none;
+}
+
+#navbarSupportedContent{
+  width: 100%
 }
