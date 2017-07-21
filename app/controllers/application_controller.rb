@@ -18,7 +18,6 @@ class ApplicationController < ActionController::Base
   end
 
 
-
   def after_sign_in_path_for(resource)
     if resource.is_a?(User)
       if resource.has_role? :MasterAdmin
@@ -32,8 +31,7 @@ class ApplicationController < ActionController::Base
       else
         root_path
       end
-    end
-    if resource.is_a?(Vehicle)
+    else resource.is_a?(Vehicle)
       root_path
     end
   end
