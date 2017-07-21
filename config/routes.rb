@@ -3,8 +3,8 @@ Rails.application.routes.draw do
 
   #devise_for :vehicles
   use_doorkeeper
-  devise_for :user
-  devise_for :vehicle
+  devise_for :user, path: 'users'
+  devise_for :vehicle, path: 'vehicles'
 
   resources :companies
   resources :bus_routes

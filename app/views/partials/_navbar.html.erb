@@ -59,6 +59,13 @@
                   <%end%>
               </li>
           <% end %>
+          <% if vehicle_signed_in? %>
+            <li>
+                          <%= link_to destroy_user_session_path, class: 'btn btn-danger col-md-12', :method => :delete do %>
+                              Terminar como Vehiculo <%=fa_icon "sign-out" %>
+                            <% end %>
+                          </li>
+          <% end %>
       </ul>
     </div>
 
