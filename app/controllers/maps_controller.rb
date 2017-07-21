@@ -1,5 +1,5 @@
 class MapsController < ApplicationController
-  skip_before_action :authenticate_user!, :only => [:index_map,:updateLocations]
+  #skip_before_action :authenticate_user!, :only => [:index_map,:updateLocations]
 
   def index_map
     @bus_locations = Vehicle.where.not(latitude: nil, longitude:nil )

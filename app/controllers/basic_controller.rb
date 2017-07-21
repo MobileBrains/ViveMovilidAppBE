@@ -2,6 +2,7 @@ class BasicController < ApplicationController
   layout "application"
   #TODO updateVehicleLocAtion quitarlo por que a alguien sin loguear solo landing y :busRoutes
   skip_before_action :authenticate_user!, :only => [:landing, :updateVehicleLocations, :busRoutes]
+  #skip_before_action :authenticate_vehicle!, :only => [:landing, :updateVehicleLocations, :busRoutes]
 
   def welcome
     #@bus_locations = Vehicle.where.not(latitude: nil, longitude:nil )
