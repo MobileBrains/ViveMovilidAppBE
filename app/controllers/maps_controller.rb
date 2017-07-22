@@ -67,7 +67,6 @@ class MapsController < ApplicationController
     #c = Company.where(manager.id current_user.id)
     @company = Company.where(manager_id: current_user.id).last
     @fleet = @company.vehicle
-    puts  "entre"
     #TODO es mejor preguntar por la location y no tener que actualizar esos campos luego en el otro modelo
     @hash = Gmaps4rails.build_markers(@fleet) do |vehicle, marker|
         marker.lat vehicle.latitude
