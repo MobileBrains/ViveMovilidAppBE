@@ -12,144 +12,142 @@
 
 <style type="text/css">
 
-
-/* The CSS */
-select {
-    padding:3px;
-    margin: 0;
-    -webkit-border-radius:4px;
-    -moz-border-radius:4px;
-    border-radius:4px;
-    -webkit-box-shadow: 0 3px 0 #5bc0de, 0 -1px #fff inset;
-    -moz-box-shadow: 0 3px 0 #5bc0de, 0 -1px #fff inset;
-    box-shadow: 0 3px 0 #5bc0de, 0 -1px #fff inset;
-    background: #f8f8f8;
-    color:#888;
-    border:none;
-    outline:none;
-    display: inline-block;
-    -webkit-appearance:none;
-    -moz-appearance:none;
-    appearance:none;
-    cursor:pointer;
-}
-
+  /* The CSS */
+  select {
+      padding:3px;
+      margin: 0;
+      -webkit-border-radius:4px;
+      -moz-border-radius:4px;
+      border-radius:4px;
+      -webkit-box-shadow: 0 3px 0 #5bc0de, 0 -1px #fff inset;
+      -moz-box-shadow: 0 3px 0 #5bc0de, 0 -1px #fff inset;
+      box-shadow: 0 3px 0 #5bc0de, 0 -1px #fff inset;
+      background: #f8f8f8;
+      color:#888;
+      border:none;
+      outline:none;
+      display: inline-block;
+      -webkit-appearance:none;
+      -moz-appearance:none;
+      appearance:none;
+      cursor:pointer;
+  }
 
 </style>
 
 <script type="text/javascript">
-$(function(){
+  $(function(){
 
-  intializeMap();
-});
-
-
-function intializeMap(){
-  if ($('#bus_route_name').val() == "") {
-      if (typeof idInterval2 !== 'undefined') {
-        clearInterval(idInterval2)
-      }
-      intializeMap1()
-      idInterval = setInterval(updateMarkersLocationPerFleet, 20000);
-  }
-  else {
-    clearInterval(idInterval)
-    intializeMap2()
-    idInterval2 = setInterval(updateMarkersLocationPerBusRoute, 20000);
-  }
-
-}
-
-function intializeMap1(){
-
-    handler = Gmaps.build('Google');
-
-    handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
-    //updateMarkersLocation();
-    updateMarkersLocationPerFleet();
-    //markers = handler.addMarkers(<%=raw @hash.to_json %>);
-    //handler.bounds.extendWith(markers);
-    //handler.map.centerOn({lat: 5.0633619, lng: -75.5102252});
-    handler.fitMapToBounds();
-
+    intializeMap();
   });
 
-}
 
-function intializeMap2(){
-    //clearInterval(idInterval)
-    handler = Gmaps.build('Google');
+  function intializeMap(){
+    if ($('#bus_route_name').val() == "") {
+        if (typeof idInterval2 !== 'undefined') {
+          clearInterval(idInterval2)
+        }
+        intializeMap1()
+        idInterval = setInterval(updateMarkersLocationPerFleet, 20000);
+    }
+    else {
+      clearInterval(idInterval)
+      intializeMap2()
+      idInterval2 = setInterval(updateMarkersLocationPerBusRoute, 20000);
+    }
 
-    handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+  }
 
-    updateMarkersLocationPerBusRoute();
-    //markers = handler.addMarkers(<%=raw @hash.to_json %>);
-    //handler.bounds.extendWith(markers);
-    //handler.map.centerOn({lat: 5.0633619, lng: -75.5102252});
-    handler.fitMapToBounds();
+  function intializeMap1(){
 
-    //setInterval(updateMarkersLocation, 20000);
-   // idInterval2 = setInterval(updateMarkersLocationPerBusRoute, 20000);
+      handler = Gmaps.build('Google');
 
-  });
+      handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+      //updateMarkersLocation();
+      updateMarkersLocationPerFleet();
+      //markers = handler.addMarkers(<%=raw @hash.to_json %>);
+      //handler.bounds.extendWith(markers);
+      //handler.map.centerOn({lat: 5.0633619, lng: -75.5102252});
+      handler.fitMapToBounds();
 
-}
+    });
+
+  }
+
+  function intializeMap2(){
+      //clearInterval(idInterval)
+      handler = Gmaps.build('Google');
+
+      handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+
+      updateMarkersLocationPerBusRoute();
+      //markers = handler.addMarkers(<%=raw @hash.to_json %>);
+      //handler.bounds.extendWith(markers);
+      //handler.map.centerOn({lat: 5.0633619, lng: -75.5102252});
+      handler.fitMapToBounds();
+
+      //setInterval(updateMarkersLocation, 20000);
+     // idInterval2 = setInterval(updateMarkersLocationPerBusRoute, 20000);
+
+    });
+
+  }
 
 
-//Center over Manizales
-function updateMarkersLocationPerFleet(){
-  $.ajax({
-          url: '/maps/updateMonitorFleet',
-          type: 'GET',
-          data: {
+  //Center over Manizales
+  function updateMarkersLocationPerFleet(){
+    $.ajax({
+            url: '/maps/updateMonitorFleet',
+            type: 'GET',
+            data: {
 
-          },
-          success: function(data) {
+            },
+            success: function(data) {
 
-            if (typeof markers !== 'undefined') {
-              handler.removeMarkers(markers)
+              if (typeof markers !== 'undefined') {
+                handler.removeMarkers(markers)
+              }
+              markers = handler.addMarkers(data);
+              handler.bounds.extendWith(markers);
+
+              handler.fitMapToBounds();
+              if (markers.length == 1) {
+                handler.getMap().setZoom(16);
+              }
+
+            },
+            error: function(data) {
+              console.log(data)
             }
-            markers = handler.addMarkers(data);
-            handler.bounds.extendWith(markers);
+          });
+  }
 
-            handler.fitMapToBounds();
-            if (markers.length == 1) {
-              handler.getMap().setZoom(16);
+  //Center over Manizales
+  function updateMarkersLocationPerBusRoute(){
+    $.ajax({
+            url: '/maps/updateMonitorFleetPerBusRoute/',
+            type: 'GET',
+            data: {
+              bus_route_name: $('#bus_route_name').val()
+            },
+            success: function(data) {
+
+              if (typeof markers !== 'undefined') {
+                handler.removeMarkers(markers)
+              }
+              markers = handler.addMarkers(data);
+
+              handler.bounds.extendWith(markers);
+              handler.fitMapToBounds();
+              if (markers.length == 1) {
+                handler.getMap().setZoom(16);
+              }
+
+            },
+            error: function(data) {
+              console.log(data)
             }
-
-          },
-          error: function(data) {
-            console.log(data)
-          }
-        });
-}
-
-//Center over Manizales
-function updateMarkersLocationPerBusRoute(){
-  $.ajax({
-          url: '/maps/updateMonitorFleetPerBusRoute/',
-          type: 'GET',
-          data: {
-            bus_route_name: $('#bus_route_name').val()
-          },
-          success: function(data) {
-
-            if (typeof markers !== 'undefined') {
-              handler.removeMarkers(markers)
-            }
-            markers = handler.addMarkers(data);
-
-            handler.bounds.extendWith(markers);
-            handler.fitMapToBounds();
-            if (markers.length == 1) {
-              handler.getMap().setZoom(16);
-            }
-
-          },
-          error: function(data) {
-            console.log(data)
-          }
-        });
-}
+          });
+  }
 
 </script>
