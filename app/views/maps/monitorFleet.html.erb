@@ -1,17 +1,16 @@
 <h1>Monitoreo de flota</h1>
 <hr>
 <div class="text-center" style="margin: 10px 10px;">
-            <h1>Monitorear la ruta</h1>
-            <%= collection_select(:bus_route, :name, @bus_routes, :name, :name, {prompt: true},
-            {:onchange => "intializeMap()", :class => "text-center"})%>
-          </div>
+  <h1>Monitorear la ruta</h1>
+  <%= collection_select(:bus_route, :name, @bus_routes, :name, :name, {prompt: true},
+  {:onchange => "renderMapx()", :class => "text-center"})%>
+</div>
 
 <div style='width: 100%;' class="text-center">
   <div id="map" class="map_dimensions" ></div>
 </div>
 
 <style type="text/css">
-
   /* The CSS */
   select {
       padding:3px;
@@ -32,63 +31,43 @@
       appearance:none;
       cursor:pointer;
   }
-
 </style>
 
 <script type="text/javascript">
 
   $(function(){
     intializeMap();
+    renderMapx();
   });
 
   function intializeMap(){
+    handler = Gmaps.build('Google');
+
+      handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+      //updateMarkersLocation();
+      updateMarkersLocationPerFleet()
+      markers = handler.addMarkers([]);
+      //handler.bounds.extendWith(markers);
+      //handler.map.centerOn({lat: 5.0633619, lng: -75.5102252});
+      handler.fitMapToBounds();
+
+    });
+
+  }
+
+  function renderMapx(){
     if ($('#bus_route_name').val() == "") {
         if (typeof idInterval2 !== 'undefined') {
           clearInterval(idInterval2)
         }
-        intializeMap1()
+        updateMarkersLocationPerFleet()
         idInterval = setInterval(updateMarkersLocationPerFleet, 20000);
     }
     else {
       clearInterval(idInterval)
-      intializeMap2()
+      updateMarkersLocationPerBusRoute()
       idInterval2 = setInterval(updateMarkersLocationPerBusRoute, 20000);
     }
-
-  }
-
-  function intializeMap1(){
-
-      handler = Gmaps.build('Google');
-
-      handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
-      //updateMarkersLocation();
-      updateMarkersLocationPerFleet();
-      //markers = handler.addMarkers(<%=raw @hash.to_json %>);
-      //handler.bounds.extendWith(markers);
-      //handler.map.centerOn({lat: 5.0633619, lng: -75.5102252});
-      handler.fitMapToBounds();
-
-    });
-
-  }
-
-  function intializeMap2(){
-      //clearInterval(idInterval)
-      handler = Gmaps.build('Google');
-
-      handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
-
-      updateMarkersLocationPerBusRoute();
-      //markers = handler.addMarkers(<%=raw @hash.to_json %>);
-      //handler.bounds.extendWith(markers);
-      //handler.map.centerOn({lat: 5.0633619, lng: -75.5102252});
-      handler.fitMapToBounds();
-
-      //setInterval(updateMarkersLocation, 20000);
-     // idInterval2 = setInterval(updateMarkersLocationPerBusRoute, 20000);
-
-    });
 
   }
 
@@ -110,6 +89,8 @@
 
               handler.fitMapToBounds();
               if (markers.length == 1) {
+                handler.map.centerOn({lat: markers[0].getServiceObject().position.lat(),
+                                      lng: markers[0].getServiceObject().position.lng()})
                 handler.getMap().setZoom(16);
               }
 
@@ -138,6 +119,8 @@
               handler.bounds.extendWith(markers);
               handler.fitMapToBounds();
               if (markers.length == 1) {
+                handler.map.centerOn({lat: markers[0].getServiceObject().position.lat(),
+                                      lng: markers[0].getServiceObject().position.lng()})
                 handler.getMap().setZoom(16);
               }
 

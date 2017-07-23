@@ -1,5 +1,5 @@
 <div class="text-center" style="margin: 10px 10px;">
-            <h1>2. Selecciona la ruta <label style="color:black"> y Listo!</label></h1>
+            <h1>1. Selecciona la ruta <label style="color:black"> y Listo!</label></h1>
             <%= collection_select(:bus_route, :name, @bus_routes, :name, :name, {prompt: true},
             {:onchange => "intializeMap()", :class => "text-center"})%>
           </div>

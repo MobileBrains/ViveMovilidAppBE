@@ -1,7 +1,10 @@
 
 <%- model_class = BusRoute -%>
+
+<div id="demo" class="collapse">
+
 <div class="page-header">
-    <h1 class="text-center">1. Busca tu destino... <label style="color:black"> y decide que ruta te sirve</label>
+    <h1 class="text-center">Busca tu destino... <label style="color:black"> y decide que ruta te sirve</label>
   </h1>
 
 </div>
@@ -22,7 +25,7 @@
         <td><%= bus_route.id %></td>
           <td><%= bus_route.name %></td>
           <td><%= bus_route.description %></td>
-          <td><%= bus_route.company_id %></td>
+          <td><%= bus_route.company.name %></td>
 
 
         <td>
@@ -40,6 +43,7 @@
     <% end %>
   </tbody>
 </table>
+</div>
 
 <script type="text/javascript">
 $(function(){

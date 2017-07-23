@@ -1,16 +1,19 @@
 
 <div class="container-fluid text-center">
   <h1 class="text-center">Mejoramos tu movilidad.</h1>
-  <label ><strong >en 2 pasos!</strong></label>
+  <label ><strong >en 1 click!</strong></label>
   <hr>
-  <%= render 'partials/bus_routes_search' %>
-  <hr>
+
   <%= render 'partials/routes' %>
   <div id="info">
     <p><strong style="color:#167fb9">Recuerda...</strong><strong>Cada 20 segundos actualizamos su ubicacion automaticamente.</strong>
+    <button class="btn btn-info" data-toggle="collapse" data-target="#demo">Mostrar Rutas</button>
+    <%= render 'partials/bus_routes_search' %>
   </div>
+
   <hr>
   <%= render 'partials/index_map' %>
+
 </div>
 
 

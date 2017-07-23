@@ -38,12 +38,10 @@ function updateMarkersLocation(){
             handler.bounds.extendWith(markers);
             handler.fitMapToBounds();
             if (markers.length == 1) {
+              handler.map.centerOn({lat: markers[0].getServiceObject().position.lat(),
+                                  lng: markers[0].getServiceObject().position.lng()})
               handler.getMap().setZoom(16);
             }
-
-
-            //handler.map.centerOn({lat: markers[0].getServiceObject().position.lat(),
-            //                      lng: markers[0].getServiceObject().position.lng()})
 
           },
           error: function(data) {
