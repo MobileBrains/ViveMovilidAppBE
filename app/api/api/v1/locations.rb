@@ -3,9 +3,9 @@ module API
     class Locations < Grape::API
       #include Defaults
       include APIDefaults
-      include APIGuard
+      #include APIGuard
 
-      guard_all!
+      #guard_all!
 
         desc "Update user location"
         params do
