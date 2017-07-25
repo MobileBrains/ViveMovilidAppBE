@@ -61,12 +61,12 @@
           clearInterval(idInterval2)
         }
         updateMarkersLocationPerFleet()
-        idInterval = setInterval(updateMarkersLocationPerFleet, 20000);
+        idInterval = setInterval(updateMarkersLocationPerFleet, 10000);
     }
     else {
       clearInterval(idInterval)
       updateMarkersLocationPerBusRoute()
-      idInterval2 = setInterval(updateMarkersLocationPerBusRoute, 20000);
+      idInterval2 = setInterval(updateMarkersLocationPerBusRoute, 10000);
     }
 
   }
