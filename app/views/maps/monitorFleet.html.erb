@@ -72,6 +72,36 @@
   }
 
   //Center over Manizales
+  function updateMarkersLocationPerBusRoute(){
+    $.ajax({
+            url: '/maps/updateMonitorFleetPerBusRoute/',
+            type: 'GET',
+            data: {
+              bus_route_name: $('#bus_route_name').val()
+            },
+            success: function(data) {
+
+              if (typeof markers !== 'undefined') {
+                handler.removeMarkers(markers)
+              }
+              markers = handler.addMarkers(data);
+
+              handler.bounds.extendWith(markers);
+              handler.fitMapToBounds();
+              if (markers.length == 1) {
+                handler.map.centerOn({lat: markers[0].getServiceObject().position.lat(),
+                                      lng: markers[0].getServiceObject().position.lng()})
+                handler.getMap().setZoom(16);
+              }
+
+            },
+            error: function(data) {
+              console.log(data)
+            }
+          });
+  }
+
+  //Center over Manizales
   function updateMarkersLocationPerFleet(){
     $.ajax({
             url: '/maps/updateMonitorFleet',
@@ -101,34 +131,6 @@
           });
   }
 
-  //Center over Manizales
-  function updateMarkersLocationPerBusRoute(){
-    $.ajax({
-            url: '/maps/updateMonitorFleetPerBusRoute/',
-            type: 'GET',
-            data: {
-              bus_route_name: $('#bus_route_name').val()
-            },
-            success: function(data) {
 
-              if (typeof markers !== 'undefined') {
-                handler.removeMarkers(markers)
-              }
-              markers = handler.addMarkers(data);
-
-              handler.bounds.extendWith(markers);
-              handler.fitMapToBounds();
-              if (markers.length == 1) {
-                handler.map.centerOn({lat: markers[0].getServiceObject().position.lat(),
-                                      lng: markers[0].getServiceObject().position.lng()})
-                handler.getMap().setZoom(16);
-              }
-
-            },
-            error: function(data) {
-              console.log(data)
-            }
-          });
-  }
 
 </script>
