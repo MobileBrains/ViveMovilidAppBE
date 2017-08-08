@@ -19,7 +19,10 @@ module ViveMovilidAppBE
     config.assets.paths << Rails.root.join("app", "assets", "fonts")
     config.autoload_paths += Dir[Rails.root.join('app', 'api' , '*')]
 
-
+    logger           = ActiveSupport::Logger.new(STDOUT)
+    logger.formatter = config.log_formatter
+    config.log_tags  = [:subdomain, :uuid]
+    config.logger    = ActiveSupport::TaggedLogging.new(logger)
   end
 end
 
