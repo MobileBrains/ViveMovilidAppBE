@@ -1,0 +1,18 @@
+=== puma startup: 2017-08-05 11:18:00 -0500 ===
+[7598] * Starting control server on unix:///tmp/puma-status-1501949880742-7598
+[7598] - Gracefully shutting down workers...
+[8642] Early termination of worker
+[8637] Early termination of worker[8646] Early termination of worker
+
+[8650] Early termination of worker
+[7598] === puma shutdown: 2017-08-05 11:20:49 -0500 ===
+[7598] - Goodbye!
+=== puma startup: 2017-08-05 11:48:51 -0500 ===
+[4332] * Starting control server on unix:///tmp/puma-status-1501951731240-4332
+[4332] - Gracefully shutting down workers...
+[4600] Early termination of worker
+[4604] Early termination of worker
+[4596] Early termination of worker
+[4608] Early termination of worker
+[4332] === puma shutdown: 2017-08-05 11:49:48 -0500 ===
+[4332] - Goodbye!

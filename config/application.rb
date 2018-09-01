@@ -14,5 +14,16 @@ module ViveMovilidAppBE
 
     config.time_zone = 'Bogota'
     config.i18n.default_locale = :es
+
+    config.paths.add File.join('app', 'api'), glob: File.join('**', '*.rb')
+    config.assets.paths << Rails.root.join("app", "assets", "fonts")
+    config.autoload_paths += Dir[Rails.root.join('app', 'api' , '*')]
+
+    logger           = ActiveSupport::Logger.new(STDOUT)
+    logger.formatter = config.log_formatter
+    config.log_tags  = [:subdomain, :uuid]
+    config.logger    = ActiveSupport::TaggedLogging.new(logger)
   end
 end
+
+require "#{Rails.root}/lib/warden_strategies"

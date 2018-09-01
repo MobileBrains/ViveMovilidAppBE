@@ -1,0 +1,33 @@
+# == Schema Information
+#
+# Table name: assigned_routes
+#
+#  id             :integer          not null, primary key
+#  company_id     :integer
+#  vehicle_id     :integer
+#  bus_route_id   :integer
+#  driver_id      :integer
+#  assigned_by_id :integer
+#  departure_time :datetime
+#  arrival_time   :datetime
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  vehicle_id: 1
+  bus_route_id: 1
+  driver_id: 1
+  departure_time: 2017-06-01 14:48:35
+  arrival_time: 2017-06-01 14:48:35
+  company_id: 1
+
+two:
+  vehicle_id: 1
+  bus_route_id: 1
+  driver_id: 1
+  departure_time: 2017-06-01 14:48:35
+  arrival_time: 2017-06-01 14:48:35
+  company_id: 1
