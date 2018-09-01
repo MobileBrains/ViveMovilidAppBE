@@ -9,14 +9,44 @@
  * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
-
  # SASS
  *= require devise_bootstrap_views
- *
 
- *= require_self
- *= require_tree .
+ *
  */
 
-@import "bootstrap-sprockets"
-@import "bootstrap"
+@import "toastr";
+@import 'bootstrap-datetimepicker';
+@import "bootstrap";
+@import "font-awesome";
+@import "custom_navbar";
+@import "custom_layout";
+@import "custom_footer";
+@import "maps";
+@import "landing";
+
+@import url('https://fonts.googleapis.com/css?family=Lobster');
+
+
+.dropdown-red-style{
+  background-color: #292b2c;
+  border-color: #d9534f;
+  color: white !important;
+}
+
+.dropdown-red-style:hover {
+  background-color: #d9534f;
+}
+
+.dropdown-menu{
+  left: -100px;
+}
+
+.menuBtn{
+  width: 100%;
+  border: none;
+}
+
+#navbarSupportedContent{
+  width: 100%;
+}
