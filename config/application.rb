@@ -14,5 +14,13 @@ module ViveMovilidAppBE
 
     config.time_zone = 'Bogota'
     config.i18n.default_locale = :es
+
+    config.paths.add File.join('app', 'api'), glob: File.join('**', '*.rb')
+    config.assets.paths << Rails.root.join("app", "assets", "fonts")
+    config.autoload_paths += Dir[Rails.root.join('app', 'api' , '*')]
+
+
   end
 end
+
+require "#{Rails.root}/lib/warden_strategies"
