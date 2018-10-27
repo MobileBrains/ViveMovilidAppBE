@@ -12,8 +12,8 @@ module ViveMovilidAppBE
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
 
-    config.time_zone = 'Bogota'
-    config.i18n.default_locale = :es
+    #config.time_zone = 'Bogota'
+    #config.i18n.default_locale = :es
 
     config.paths.add File.join('app', 'api'), glob: File.join('**', '*.rb')
     config.assets.paths << Rails.root.join("app", "assets", "fonts")
