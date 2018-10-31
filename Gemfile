@@ -53,7 +53,7 @@ gem 'momentjs-rails', '>= 2.9.0'
 gem 'bootstrap3-datetimepicker-rails', '~> 4.14.30'
 
 # User Authentication
-gem 'devise'
+gem 'devise', '~> 4.4.0'
 # Styled devise views
 gem 'devise-bootstrap-views'
 #Pretty alerts

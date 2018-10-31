@@ -2,13 +2,14 @@ Rails.application.routes.draw do
 
 
   #devise_for :vehicles
-  use_doorkeeper
+
   devise_for :user, path: 'users'
   devise_for :vehicle, path: 'vehicles'
 
   resources :companies
   resources :bus_routes
   resources :vehicles
+  use_doorkeeper
 
   mount RailsAdmin::Engine => '/dashboard', as: 'rails_admin'
   mount API::Base, at: "/viveApi"

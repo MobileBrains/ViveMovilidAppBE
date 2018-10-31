@@ -19,8 +19,8 @@ default: &default
   encoding: unicode
 
   # Database host
-  host: localhost
-  port: 5432
+  host: <%= ENV['HOST'] %>
+  port: <%= ENV['DB_PORT'] %>
 
   # For details on connection pooling, see rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
