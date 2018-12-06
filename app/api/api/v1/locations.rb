@@ -13,13 +13,17 @@ module API
           requires :longitude, type: Float, desc: "Longitude coordinates"
         end
         post "/updateLocation" do
-          vehicle = Vehicle.where(:id => current_user.id).first
+          puts "oelo"
+
+          vehicle = Vehicle.where(:id => current_vehicle.id).first
+          puts "oelo2"
+          puts vehicle.to_json
           if vehicle.present?
             vehicle.update_attributes(:latitude => permitted_params[:latitude], :longitude => permitted_params[:longitude])
 
             location = Location.create({  latitude: permitted_params[:latitude],
                                           longitude: permitted_params[:longitude],
-                                          vehicle_id: current_user.id})
+                                          vehicle_id: current_vehicle.id})
             location.save
             #put the pusher trigger here!
             present :location, location, with: LocationEntity

@@ -8,13 +8,13 @@ Doorkeeper.configure do
     # Put your resource owner authentication logic here.
     # Example implementation:
     #   User.find_by_id(session[:user_id]) || redirect_to(new_user_session_url)
-    env['warden'].authenticate(:user_strategy)
-    #env['warden'].authenticate(:vehicle_strategy)
+    #env['warden'].authenticate(:user_strategy)
+    env['warden'].authenticate(:vehicle_strategy)
   end
 
   resource_owner_from_credentials do |routes|
-     env['warden'].authenticate(:user_strategy)
-     #env['warden'].authenticate(:vehicle_strategy)
+     #env['warden'].authenticate(:user_strategy)
+     env['warden'].authenticate(:vehicle_strategy)
   end
 
   # If you want to restrict access to the web interface for adding oauth authorized applications, you need to declare the block below.

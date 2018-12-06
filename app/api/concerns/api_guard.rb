@@ -64,13 +64,17 @@ module APIGuard
         when AccessTokenValidation::VALID
           @current_application = access_token.application_id
           resource_owner_id = access_token.resource_owner_id
-          @current_user = User.find(resource_owner_id) if resource_owner_id
+          @current_vehicle = Vehicle.find(resource_owner_id) if resource_owner_id
         end
       end
     end
 
     def current_user
       @current_user
+    end
+
+    def current_vehicle
+      @current_vehicle
     end
 
     def current_application

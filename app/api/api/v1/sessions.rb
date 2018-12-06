@@ -55,19 +55,20 @@ module API
           email = permitted_params[:email]
           pass = permitted_params[:pass]
 
-          user = Vehicle.find_by(email: email.downcase)
-          if user.nil?
+          vehicle = Vehicle.find_by(email: email.downcase)
+          if vehicle.nil?
             return {success: false, errors: ["Invalid email."]}
           end
 
-          unless user.valid_password?(pass)
+          unless vehicle.valid_password?(pass)
             return {success: false, errors: ["Invalid password."]}
           else
             # TODO: Check it
-            # user.ensure_authentication_token!
-            # user.save
-            authentication_token = Doorkeeper::AccessToken.create(application_id: current_application, resource_owner_id: user.id)
-            return {success: true, data: {user: user, user_access_token: authentication_token.token}}
+            # vehicle.ensure_authentication_token!
+            # vehicle.save
+            authentication_token = Doorkeeper::AccessToken.create(application_id: current_application, resource_owner_id: vehicle.id)
+            #return {success: true, data: {vehicle: vehicle, vehicle_access_token: authentication_token.token}}
+            return {success: true, data: {user: vehicle, user_access_token: authentication_token.token}}
           end
         end
 
