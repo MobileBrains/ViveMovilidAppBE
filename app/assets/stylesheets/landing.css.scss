@@ -1,0 +1,64 @@
+.vive_register_button {
+  width: 40%;
+  margin-top: 15px;
+}
+
+.landing_title {
+  font-family: 'Lobster', cursive;
+  font-size: 60px;
+  margin-bottom: -8px;
+}
+
+.tuto_image{
+  width: 30%;
+}
+
+/* different techniques for iPad screening */
+    @media only screen and (min-width: 250px) and (max-width: 767px) {
+      /* For portrait layouts only */
+      .vive_register_button {
+        width: 100%;
+        margin-top: 15px;
+      }
+
+      .tuto_image{
+        width: 50%;
+      }
+
+    }
+
+    @media only screen and (min-width: 768px) and (min-width: 1366px) {
+      .tuto_image{
+        width: 15%;
+      }
+    }
+
+    @media only screen and (min-width: 1370px) {
+      /* For portrait layouts only */
+      .vive_register_button {
+        width: 30%;
+        padding: 23px 15px ;
+        font-size: 30px;
+        margin-top: 15px;
+      }
+
+      .landing-info{
+        margin-top: 3%;
+      }
+
+      .tuto_image{
+        width: 20%;
+      }
+    }
+
+
+@font-face {
+  font-family: 'icofonts';
+  src: url(/assets/icofonts.eot);
+  src: url(/assets/icofonts.eot?#iefix) format("embedded-opentype"),
+    url(/assets/icofonts.ttf) format("truetype"),
+    url(/assets/icofonts.woff) format("woff"),
+    url(/assets/icofonts.svg#icofonts) format("svg");
+  font-weight: normal;
+  font-style: normal;
+}

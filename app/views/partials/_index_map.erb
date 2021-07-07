@@ -1,0 +1,80 @@
+<div style='width: 100%;' class="text-center">
+  <div id="map" class="map_dimensions" ></div>
+</div>
+<script type="text/javascript">
+
+
+function intializeMap(){
+    handler = Gmaps.build('Google');
+
+    handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+    updateMarkersLocation()
+    //updateMarkersLocation();
+    markers = handler.addMarkers(<%=raw @hash.to_json %>);
+    handler.bounds.extendWith(markers);
+    //handler.map.centerOn({lat: 5.0633619, lng: -75.5102252});
+    handler.fitMapToBounds();
+
+    setInterval(updateMarkersLocation, 10000);
+
+  });
+
+}
+
+//Center over Manizales
+function updateMarkersLocation(){
+  $.ajax({
+          url: '/basic/updateVehicleLocations/',
+          type: 'GET',
+          data: {
+            bus_route_name: $('#bus_route_name').val()
+          },
+          success: function(data) {
+
+            if (typeof markers !== 'undefined') {
+              handler.removeMarkers(markers)
+            }
+            markers = handler.addMarkers(data);
+            handler.bounds.extendWith(markers);
+            handler.fitMapToBounds();
+            if (markers.length == 1) {
+              handler.map.centerOn({lat: markers[0].getServiceObject().position.lat(),
+                                  lng: markers[0].getServiceObject().position.lng()})
+              handler.getMap().setZoom(16);
+            }
+
+          },
+          error: function(data) {
+            console.log(data)
+          }
+        });
+}
+
+//center on first marker
+function updateSelectedMarkersLocation(){
+  $.ajax({
+          url: '/basic/updateVehicleLocations/',
+          type: 'GET',
+          data: {
+            bus_route_name: $('#bus_route_name').val()
+          },
+          success: function(data) {
+
+            if (typeof markers !== 'undefined') {
+              handler.removeMarkers(markers)
+            }
+            markers = handler.addMarkers(data);
+            handler.bounds.extendWith(markers);
+            handler.getMap().setZoom(16);
+            handler.map.centerOn({lat: markers[0].getServiceObject().position.lat(),
+                                  lng: markers[0].getServiceObject().position.lng()})
+
+          },
+          error: function(data) {
+            console.log(data)
+          }
+        });
+}
+
+
+</script>

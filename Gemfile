@@ -1,10 +1,5 @@
 source 'https://rubygems.org'
-ruby "2.3.1"
-git_source(:github) do |repo_name|
-  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
-  "https://github.com/#{repo_name}.git"
-end
-
+#ruby "2.5.3"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.3'
@@ -38,14 +33,64 @@ gem 'jbuilder', '~> 2.5'
 # Manage the application.yml file
 gem 'figaro'
 
-# Bootstrap integration
-gem 'bootstrap-sass', '~> 3.2.0'
+# Bootstrap 4 integration
+gem 'bootstrap', '~> 4.0.0.alpha6'
+# Bootstrap generator
+gem 'bootstrap-sass-extras'
+# add correct prefix to css files
 gem 'autoprefixer-rails'
 
-#User Authentication
-gem 'devise'
-# styled devise views
+source 'https://rails-assets.org' do
+  gem 'rails-assets-tether', '>= 1.3.3'
+end
+
+# Font awasome Icons
+gem "font-awesome-rails"
+gem 'font-awesome-sass'
+
+# datetime picker
+gem 'momentjs-rails', '>= 2.9.0'
+gem 'bootstrap3-datetimepicker-rails', '~> 4.14.30'
+
+# User Authentication
+gem 'devise', '~> 4.4.0'
+# Styled devise views
 gem 'devise-bootstrap-views'
+#Pretty alerts
+gem 'toastr-rails'
+
+# Administration dasboard
+gem 'rails_admin', '~> 1.1.1'
+
+# User permisions
+gem 'cancancan'
+
+# User Roles
+gem 'rolify'
+
+#Google Maps integration
+gem 'gmaps4rails'
+
+#Google Maps Geocoding tasks handler (Geocoding is the process of converting addresses to longitude - latitude, and more)
+gem 'geocoder'
+
+# Ajax datatables
+#gem 'jquery-datatables-rails', git: 'git://github.com/rweng/jquery-datatables-rails.git', branch: 'master'
+#gem 'ajax-datatables-rails'
+
+# Api authentication
+gem 'doorkeeper'
+gem 'rack-oauth2'
+
+#Models, Routes and Specs Documentation
+gem 'annotate'
+
+group :api do
+  gem 'grape'
+  gem 'grape-entity'
+  gem 'rack-cors', :require => 'rack/cors'
+  gem 'rest-client' # Test API
+end
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
